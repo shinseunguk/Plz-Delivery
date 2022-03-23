@@ -58,7 +58,7 @@ public class Fragment3 extends Fragment {
 
         ContentValues values = new ContentValues();
 
-        NetworkTask networkTask = new NetworkTask("http://172.30.1.50:8008/checkbox", values);
+        NetworkTask networkTask = new NetworkTask("http://175.212.211.98:8008/checkbox", values);
         networkTask.execute();
 
         try {
@@ -114,7 +114,7 @@ public class Fragment3 extends Fragment {
                     values.put("address1", address1);
                     values.put("address2", address2);
 
-                    Fragment3.NetworkTask networkTask = new Fragment3.NetworkTask("http://172.30.1.50:8008/userinfo", values);
+                    Fragment3.NetworkTask networkTask = new Fragment3.NetworkTask("http://175.212.211.98:8008/userinfo", values);
                     networkTask.execute();
 
                     try {
