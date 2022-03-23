@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tab1"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_bike_scooter_24"
+        android:title="직거래 신청"/>
+
+    <item
+        android:id="@+id/tab2"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_supervisor_account_24"
+        android:title="배달"/>
+
+    <item
+        android:id="@+id/tab3"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_person_pin_24"
+        android:title="내 정보"/>
+    <item
+        android:id="@+id/tab4"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_chat_24"
+        android:title="채팅"/>
+    <item
+        android:id="@+id/tab5"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_vpn_key_24"
+        android:title="로그아웃"/>
+
+</menu>

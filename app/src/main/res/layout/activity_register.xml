@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ScrollView"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        tools:ignore="Suspicious0dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원가입"
+            android:padding="30dp"
+            android:textSize="20dp"
+            />
+
+
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:hint="example@plzexchange.com"
+                android:inputType="textEmailAddress" />
+        <TextView
+            android:id="@+id/tv_error_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0000"
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_email"
+            />
+
+        <EditText
+            android:id="@+id/Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="비밀번호 입력(8자 이상)"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center"
+            android:inputType="textPassword"
+            />
+
+        <EditText
+            android:id="@+id/recheckPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="비밀번호 재입력(8자 이상)"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_gravity="center"
+            android:inputType="textPassword"
+            />
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp">
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="이름"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:inputType="text"
+                />
+            <EditText
+                android:id="@+id/tel"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="전화번호"
+                android:maxLength="13"
+                android:inputType="number"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="10"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+            <EditText
+                android:id="@+id/address"
+                android:layout_width="0dp"
+                android:layout_weight="7"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:enabled="false"
+                android:hint="주소"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/btnAddress"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="30dp"
+                android:text="주소검색"
+                android:layout_marginLeft="10dp"
+                android:onClick="btnAddress"
+                />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/address_last"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:enabled="false"
+            android:hint="상세주소"
+            android:layout_gravity="center"
+            android:inputType="text"
+            />
+
+
+        <LinearLayout
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_weight="3"
+            >
+            <!--    spinner 교체예정        -->
+            <EditText
+                android:id="@+id/year"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="년(4자)"
+                android:layout_gravity="center"
+                android:inputType="number"
+                android:layout_marginTop="30dp"
+                android:layout_width="20dp"/>
+            <Spinner
+                android:id="@+id/month"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_width="20dp"/>
+        <!--    spinner 교체예정        -->
+            <EditText
+                android:id="@+id/day"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:hint="일"
+                android:layout_gravity="center"
+                android:inputType="number"
+                android:layout_marginTop="30dp"
+                android:layout_width="20dp"/>
+            
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/sex"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"/>
+
+
+
+    </LinearLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/signupBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="회원가입"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:onClick="signup"
+            />
+
+    </LinearLayout>
+</LinearLayout>
