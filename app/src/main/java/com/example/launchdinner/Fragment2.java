@@ -58,7 +58,7 @@ public class Fragment2 extends ListFragment {
 
 
         //이쯤에서 서버통신후 adapter.additem ~
-        NetworkTask networkTask = new NetworkTask("http://172.30.1.20:8008/applylist");
+        NetworkTask networkTask = new NetworkTask("http://172.30.1.50:8008/applylist");
         networkTask.execute();
 
         try {

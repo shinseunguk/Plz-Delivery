@@ -38,7 +38,7 @@ public class Fragment2Second extends ListFragment {
         setListAdapter(adapter) ;
 
         //이쯤에서 서버통신후 adapter.additem ~
-        Fragment2Second.NetworkTask networkTask = new Fragment2Second.NetworkTask("http://172.30.1.20:8008/myapplylist");
+        Fragment2Second.NetworkTask networkTask = new Fragment2Second.NetworkTask("http://172.30.1.50:8008/myapplylist");
         networkTask.execute();
 
         try {

@@ -87,7 +87,7 @@ public class ApplyViewActivity extends AppCompatActivity {
                     ContentValues values = new ContentValues();
                     values.put("seq", seqText);
 
-                    NetworkTask networkTask = new NetworkTask("http://172.30.1.20:8008/deliver", values);
+                    NetworkTask networkTask = new NetworkTask("http://172.30.1.50:8008/deliver", values);
                     networkTask.execute();
 
                     try {
@@ -111,7 +111,7 @@ public class ApplyViewActivity extends AppCompatActivity {
                     ContentValues values = new ContentValues();
                     values.put("seq", seqText);
 
-                    NetworkTask networkTask = new NetworkTask("http://172.30.1.20:8008/deliverysuc", values);
+                    NetworkTask networkTask = new NetworkTask("http://172.30.1.50:8008/deliverysuc", values);
                     networkTask.execute();
 
                     try {
@@ -140,7 +140,7 @@ public class ApplyViewActivity extends AppCompatActivity {
                 ContentValues values = new ContentValues();
                 values.put("seq", seqText);
 
-                NetworkTask networkTask = new NetworkTask("http://172.30.1.20:8008/deletedelivery", values);
+                NetworkTask networkTask = new NetworkTask("http://172.30.1.50:8008/deletedelivery", values);
                 networkTask.execute();
 
                 try {
@@ -169,7 +169,7 @@ public class ApplyViewActivity extends AppCompatActivity {
             ContentValues values = new ContentValues();
             values.put("seq", seq);
 
-            NetworkTask networkTask = new NetworkTask("http://172.30.1.20:8008/applyview", values);
+            NetworkTask networkTask = new NetworkTask("http://172.30.1.50:8008/applyview", values);
             networkTask.execute();
         }
     }

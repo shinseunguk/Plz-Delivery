@@ -164,7 +164,7 @@ public class LoginActivity extends AppCompatActivity {
         values.put("id", identity);
         values.put("pw", passWord);
 
-        NetworkTask networkTask = new NetworkTask("http://172.30.1.20:8008/login", values);
+        NetworkTask networkTask = new NetworkTask("http://172.30.1.50:8008/login", values);
         if(networkTask!=null){
             networkTask.execute();
         }else{

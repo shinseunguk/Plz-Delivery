@@ -91,7 +91,7 @@ public class registerActivity extends AppCompatActivity {
                     ContentValues values = new ContentValues();
                     values.put("id", identity);
 
-                    NetworkTask networkTask = new NetworkTask("http://172.30.1.20:8008/checkEmail", values);
+                    NetworkTask networkTask = new NetworkTask("http://172.30.1.50:8008/checkEmail", values);
                     networkTask.execute();
                 }
             }
@@ -218,7 +218,7 @@ public class registerActivity extends AppCompatActivity {
             sToast("빈칸없이 작성 해주세요");
         }else {
 //            task.execute(map);
-            NetworkTask networkTask = new NetworkTask("http://172.30.1.20:8008/signup", values);
+            NetworkTask networkTask = new NetworkTask("http://172.30.1.50:8008/signup", values);
             networkTask.execute();
 
             Intent intent = new Intent(registerActivity.this, LoginActivity.class);

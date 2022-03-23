@@ -258,7 +258,7 @@ public class HomeActivity extends AppCompatActivity {
 
                         editor.remove("sessionid").commit();
 
-                        NetworkTask networkTask = new NetworkTask("http://172.30.1.20:8008/logout");
+                        NetworkTask networkTask = new NetworkTask("http://172.30.1.50:8008/logout");
                         networkTask.execute();
 
                         UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {

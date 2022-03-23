@@ -132,7 +132,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
 
             @Override
             public void onClick(View v) {
-                NetworkTask networkTask = new NetworkTask("http://172.30.1.20:8008/checkbox");
+                NetworkTask networkTask = new NetworkTask("http://172.30.1.50:8008/checkbox");
                 networkTask.execute();
 
 
@@ -261,7 +261,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
                     values.put("startingDate", startingDate);
                     values.put("endingDate", EndingDate);
 
-                    NetworkTask networkTask = new NetworkTask("http://172.30.1.20:8008/apply", values);
+                    NetworkTask networkTask = new NetworkTask("http://172.30.1.50:8008/apply", values);
                     networkTask.execute();
 
                     intent = new Intent(getActivity(), HomeActivity.class);
