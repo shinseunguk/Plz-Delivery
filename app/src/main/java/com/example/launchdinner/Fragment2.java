@@ -39,6 +39,8 @@ public class Fragment2 extends ListFragment {
     ListViewAdapter adapter ;
     ViewPager viewPager;
     TabLayout tabLayout;
+    String localIp;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,6 +50,8 @@ public class Fragment2 extends ListFragment {
         ListView listView = (ListView) v.findViewById(android.R.id.list);
         FrameLayout fr = (FrameLayout) v.findViewById(R.id.FragmentSecond);
 
+        localIp = getString(R.string.localip);
+        Log.d("localIp ", localIp);
 
         // Adapter 생성 및 Adapter 지정.
         adapter = new ListViewAdapter(getActivity()) ;
@@ -58,7 +62,7 @@ public class Fragment2 extends ListFragment {
 
 
         //이쯤에서 서버통신후 adapter.additem ~
-        NetworkTask networkTask = new NetworkTask("http://175.212.211.98:8008/applylist");
+        NetworkTask networkTask = new NetworkTask(localIp+"/applylist");
         networkTask.execute();
 
         try {

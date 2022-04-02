@@ -37,6 +37,8 @@ public class registerActivity extends AppCompatActivity {
     TextView tv_error_email;
     boolean idCheck = false;
 
+    String localIp = getString(R.string.localip);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 //        Log.d("호출","호출");
@@ -45,6 +47,7 @@ public class registerActivity extends AppCompatActivity {
         Log.d("log","onCreate");
 //        task = new Task();
 
+        Log.d("localIp ", localIp);
 
         id = (EditText)findViewById(R.id.email);
         passWord = (EditText)findViewById(R.id.Password);
@@ -91,7 +94,7 @@ public class registerActivity extends AppCompatActivity {
                     ContentValues values = new ContentValues();
                     values.put("id", identity);
 
-                    NetworkTask networkTask = new NetworkTask("175.212.211.98:8008/checkEmail", values);
+                    NetworkTask networkTask = new NetworkTask(localIp+"/checkEmail", values);
                     networkTask.execute();
                 }
             }
@@ -218,7 +221,7 @@ public class registerActivity extends AppCompatActivity {
             sToast("빈칸없이 작성 해주세요");
         }else {
 //            task.execute(map);
-            NetworkTask networkTask = new NetworkTask("http://175.212.211.98:8008/signup", values);
+            NetworkTask networkTask = new NetworkTask(localIp+"/signup", values);
             networkTask.execute();
 
             Intent intent = new Intent(registerActivity.this, LoginActivity.class);

@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.19895833333333332" />
+        <entry key="app/src/main/res/drawable/ic_baseline_developer_board_24.xml" value="0.23177083333333334" />
+        <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.284375" />
+        <entry key="app/src/main/res/drawable/ic_baseline_person_pin_24.xml" value="0.284375" />
         <entry key="app/src/main/res/layout/activity_address.xml" value="0.1503623188405797" />
         <entry key="app/src/main/res/layout/activity_apply_view.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />
@@ -11,6 +14,8 @@
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3338541666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1503623188405797" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.3338541666666667" />
+        <entry key="app/src/main/res/layout/activity_webview.xml" value="0.21354166666666666" />
+        <entry key="app/src/main/res/layout/activtiy_webview.xml" value="0.21354166666666666" />
         <entry key="app/src/main/res/layout/fragment_1.xml" value="0.2582297000731529" />
         <entry key="app/src/main/res/layout/fragment_2.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_2_2.xml" value="0.14739583333333334" />
@@ -18,7 +23,9 @@
         <entry key="app/src/main/res/layout/fragment_2third.xml" value="0.14739583333333334" />
         <entry key="app/src/main/res/layout/fragment_3.xml" value="0.24385245901639344" />
         <entry key="app/src/main/res/layout/fragment_4.xml" value="0.23541666666666666" />
+        <entry key="app/src/main/res/layout/fragment_5.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/listview_item.xml" value="0.265625" />
+        <entry key="app/src/main/res/layout/listview_item2.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_navigation.xml" value="0.2125" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.3338541666666667" />
       </map>

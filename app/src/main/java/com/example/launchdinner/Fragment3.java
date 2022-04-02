@@ -34,10 +34,15 @@ public class Fragment3 extends Fragment {
     TextView userInfoName, userInfoId;
     EditText editName, editTel, editAddr1, editAddr2;
     Button btnAddr, btnModify;
+    String localIp;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_3, container, false);
+
+        localIp = getString(R.string.localip);
+        Log.d("localIp ", localIp);
 
         //TextView
         userInfoName = (TextView) v.findViewById(R.id.userInfoName);
@@ -58,7 +63,7 @@ public class Fragment3 extends Fragment {
 
         ContentValues values = new ContentValues();
 
-        NetworkTask networkTask = new NetworkTask("http://175.212.211.98:8008/checkbox", values);
+        NetworkTask networkTask = new NetworkTask(localIp+"/checkbox", values);
         networkTask.execute();
 
         try {
@@ -114,7 +119,7 @@ public class Fragment3 extends Fragment {
                     values.put("address1", address1);
                     values.put("address2", address2);
 
-                    Fragment3.NetworkTask networkTask = new Fragment3.NetworkTask("http://175.212.211.98:8008/userinfo", values);
+                    Fragment3.NetworkTask networkTask = new Fragment3.NetworkTask(localIp+"/userinfo", values);
                     networkTask.execute();
 
                     try {

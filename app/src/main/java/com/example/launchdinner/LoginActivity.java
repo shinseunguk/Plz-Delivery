@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -47,6 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     // 첫 번째 뒤로 가기 버튼을 누를 때 표시
     private Toast toast;
     private Button loginBtn, beLoginBtn, registerBtn;
+    String localIp;
 
     SharedPreferences pref;
     SharedPreferences.Editor editor;
@@ -54,6 +56,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        localIp = getString(R.string.localip);
+        Log.d("localIp ", localIp);
 
         id= (EditText)findViewById(R.id.editTextTextEmailAddress);
         pw = (EditText)findViewById(R.id.editTextTextPassword2);
@@ -65,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         pref = getSharedPreferences("Preferenceszz", Activity.MODE_PRIVATE);
         editor = pref.edit();
 
-
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 //        getHashKey(); //hash 값 가져오기
     }
 
@@ -164,7 +169,8 @@ public class LoginActivity extends AppCompatActivity {
         values.put("id", identity);
         values.put("pw", passWord);
 
-        NetworkTask networkTask = new NetworkTask("http://175.212.211.98:8008/login", values);
+        Log.d("localIp/login ", localIp+"/login");
+        NetworkTask networkTask = new NetworkTask(localIp+"/login", values);
         if(networkTask!=null){
             networkTask.execute();
         }else{

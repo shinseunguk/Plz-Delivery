@@ -23,10 +23,14 @@ import java.util.concurrent.ExecutionException;
 public class Fragment2Third extends ListFragment {
 
     ListViewAdapter adapter ;
+    String localIp;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        localIp = getString(R.string.localip);
+        Log.d("localIp ", localIp);
 
         Log.d("onCreateView", "Fragment2Third");
         View v = inflater.inflate(R.layout.fragment_2third, container, false);
@@ -37,7 +41,7 @@ public class Fragment2Third extends ListFragment {
         setListAdapter(adapter) ;
 
         //이쯤에서 서버통신후 adapter.additem ~
-        Fragment2Third.NetworkTask networkTask = new Fragment2Third.NetworkTask("http://175.212.211.98:8008/mydelivery");
+        Fragment2Third.NetworkTask networkTask = new Fragment2Third.NetworkTask(localIp+"/mydelivery");
         networkTask.execute();
 
         try {

@@ -48,12 +48,15 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
     int index = 0;
     Fragment2 fragment2;
     CheckBox checkBox;
+    String localIp;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.d("call", "onCreateView Fragment1");
         // Inflate the layout for this fragment
+        localIp = getString(R.string.localip);
+        Log.d("localIp ", localIp);
 
         View v = inflater.inflate(R.layout.fragment_1, container, false);
         fragment2 = new Fragment2();
@@ -132,7 +135,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
 
             @Override
             public void onClick(View v) {
-                NetworkTask networkTask = new NetworkTask("http://175.212.211.98:8008/checkbox");
+                NetworkTask networkTask = new NetworkTask(localIp+"/checkbox");
                 networkTask.execute();
 
 
@@ -261,7 +264,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
                     values.put("startingDate", startingDate);
                     values.put("endingDate", EndingDate);
 
-                    NetworkTask networkTask = new NetworkTask("http://175.212.211.98:8008/apply", values);
+                    NetworkTask networkTask = new NetworkTask(localIp+"/apply", values);
                     networkTask.execute();
 
                     intent = new Intent(getActivity(), HomeActivity.class);

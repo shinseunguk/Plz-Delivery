@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -16,25 +15,37 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Launchdinner"
+        android:screenOrientation="portrait"
         android:usesCleartextTraffic="true">
-        <activity android:name=".KakaoMapViewActivity"/>
-        <activity android:name=".ApplyViewActivity" />
+        <activity
+            android:name=".WebviewActivity"
+            android:screenOrientation="portrait"
+            android:exported="true" />
+        <activity android:name=".KakaoMapViewActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ApplyViewActivity"
+            android:screenOrientation="portrait"/>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="9e2ef8e16a27dfce871331354795f185" />
 
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".addressActivity" />
-        <activity android:name=".registerActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".HomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".addressActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".registerActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

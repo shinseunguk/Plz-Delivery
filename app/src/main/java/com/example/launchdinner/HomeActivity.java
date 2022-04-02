@@ -11,6 +11,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
     Fragment2 fragment2 = new Fragment2();
     Fragment3 fragment3 = new Fragment3();
     Fragment4 fragment4 = new Fragment4();
+    Fragment5 fragment5 = new Fragment5();
 
     Fragment2Second fragment2Second = new Fragment2Second();
     Fragment2Third fragment2Third = new Fragment2Third();
@@ -48,6 +50,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         tabLayout = (TabLayout) findViewById(R.id.tabs);
@@ -168,6 +171,9 @@ public class HomeActivity extends AppCompatActivity {
                         if(fragmentManager.findFragmentByTag("Fragment2Third") != null){
                             fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Third")).commit();
                         }
+                        if(fragmentManager.findFragmentByTag("fiveth") != null){
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("fiveth")).commit();
+                        }
                         return true;
                     }
                     //배달
@@ -197,6 +203,9 @@ public class HomeActivity extends AppCompatActivity {
                         if(fragmentManager.findFragmentByTag("Fragment2Third") != null){
                             fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Third")).commit();
                         }
+                        if(fragmentManager.findFragmentByTag("fiveth") != null){
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("fiveth")).commit();
+                        }
                         return true;
                     }
                     //홈
@@ -222,9 +231,12 @@ public class HomeActivity extends AppCompatActivity {
                         if(fragmentManager.findFragmentByTag("Fragment2Third") != null){
                             fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Third")).commit();
                         }
+                        if(fragmentManager.findFragmentByTag("fiveth") != null){
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("fiveth")).commit();
+                        }
                         return true;
                     }
-                    //채팅
+                    //게시판
                     case R.id.tab4: {
                         tabLayout.removeAllTabs();
                         if(fragmentManager.findFragmentByTag("fourth") != null){
@@ -247,28 +259,57 @@ public class HomeActivity extends AppCompatActivity {
                         if(fragmentManager.findFragmentByTag("Fragment2Third") != null){
                             fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Third")).commit();
                         }
+                        if(fragmentManager.findFragmentByTag("fiveth") != null){
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("fiveth")).commit();
+                        }
                         return true;
                     }
-                    //로그아웃
+                    //내정보
                     case R.id.tab5: {
-                        sToast("정상적으로 로그아웃되었습니다");
+                        tabLayout.removeAllTabs();
+                        if(fragmentManager.findFragmentByTag("fiveth") != null){
+                            fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("fiveth")).commit();
+                        }else{
+                            fragmentManager.beginTransaction().add(R.id.main_layout, fragment5, "fiveth").commit();
+                        }
+                        if(fragmentManager.findFragmentByTag("first") != null){
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("first")).commit();
+                        }
+                        if(fragmentManager.findFragmentByTag("third") != null){
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("third")).commit();
+                        }
+                        if(fragmentManager.findFragmentByTag("second") != null){
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("second")).commit();
+                        }
+                        if(fragmentManager.findFragmentByTag("Fragment2Second") != null){
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Second")).commit();
+                        }
+                        if(fragmentManager.findFragmentByTag("Fragment2Third") != null){
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Third")).commit();
+                        }
+                        if(fragmentManager.findFragmentByTag("fourth") != null){
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("foruth")).commit();
+                        }
+                        return true;
 
-                        SharedPreferences pref = getSharedPreferences("sessionCookie", Activity.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = pref.edit();
-
-                        editor.remove("sessionid").commit();
-
-                        NetworkTask networkTask = new NetworkTask("http://175.212.211.98:8008/logout");
-                        networkTask.execute();
-
-                        UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
-                            @Override
-                            public void onCompleteLogout() {
-                                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
-                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(intent);
-                            }
-                        });
+//                        sToast("정상적으로 로그아웃되었습니다");
+//
+//                        SharedPreferences pref = getSharedPreferences("sessionCookie", Activity.MODE_PRIVATE);
+//                        SharedPreferences.Editor editor = pref.edit();
+//
+//                        editor.remove("sessionid").commit();
+//
+//                        NetworkTask networkTask = new NetworkTask("http://113.199.97.48:8080/logout");
+//                        networkTask.execute();
+//
+//                        UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
+//                            @Override
+//                            public void onCompleteLogout() {
+//                                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+//                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//                                startActivity(intent);
+//                            }
+//                        });
                     }
                     default:
                         return false;

@@ -15,18 +15,18 @@
 
     <item
         android:id="@+id/tab3"
-        android:enabled="true"
-        android:icon="@drawable/ic_baseline_person_pin_24"
-        android:title="내 정보"/>
+    android:enabled="true"
+    android:icon="@drawable/ic_baseline_person_pin_24"
+    android:title="내 정보"/>
     <item
         android:id="@+id/tab4"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_chat_24"
-        android:title="채팅"/>
+        android:icon="@drawable/ic_baseline_developer_board_24"
+        android:title="게시판"/>
     <item
         android:id="@+id/tab5"
         android:enabled="true"
-        android:icon="@drawable/ic_baseline_vpn_key_24"
-        android:title="로그아웃"/>
+        android:icon="@drawable/ic_baseline_pending_24"
+        android:title="설정"/>
 
 </menu>

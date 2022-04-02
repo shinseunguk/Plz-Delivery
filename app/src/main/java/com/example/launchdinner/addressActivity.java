@@ -18,13 +18,16 @@ public class addressActivity extends AppCompatActivity {
     private WebView webView ;
     private TextView result;
     private Handler handler;
-
+    String localIp;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_address);
+
+        localIp = getString(R.string.localip);
+        Log.d("localIp ", localIp);
 
         init_webView();
         // 핸들러를 통한 JavaScript 이벤트 반응
@@ -58,7 +61,7 @@ public class addressActivity extends AppCompatActivity {
         // web client 를 chrome 으로 설정
             webView.setWebChromeClient(new WebChromeClient());
             // webview url load
-            webView.loadUrl("http://175.212.211.98:8008/address");
+            webView.loadUrl(localIp+"/address");
     }
 
     private class AndroidBridge {

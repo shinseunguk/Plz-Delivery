@@ -27,6 +27,8 @@ public class ApplyViewActivity extends AppCompatActivity {
     Button btnShowMipMap, btnDelivery, btnDelete, btnChat;
     String loginId;
     String start_address1, start_address2, end_address1, end_address2;
+
+    String localIp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +65,8 @@ public class ApplyViewActivity extends AppCompatActivity {
             public void onClick(View view){
                 Log.d("click",start_address1 + start_address2);
 
+                localIp = getString(R.string.localip);
+                Log.d("localIp ", localIp);
 //                start_address1 = json.getString("start_address1");
 //                start_address2 = json.getString("start_address2");
 //                end_address1 = json.getString("end_address1");
@@ -87,7 +91,7 @@ public class ApplyViewActivity extends AppCompatActivity {
                     ContentValues values = new ContentValues();
                     values.put("seq", seqText);
 
-                    NetworkTask networkTask = new NetworkTask("http://175.212.211.98:8008/deliver", values);
+                    NetworkTask networkTask = new NetworkTask(localIp+"/deliver", values);
                     networkTask.execute();
 
                     try {
@@ -111,7 +115,7 @@ public class ApplyViewActivity extends AppCompatActivity {
                     ContentValues values = new ContentValues();
                     values.put("seq", seqText);
 
-                    NetworkTask networkTask = new NetworkTask("http://175.212.211.98:8008/deliverysuc", values);
+                    NetworkTask networkTask = new NetworkTask(localIp+"/deliverysuc", values);
                     networkTask.execute();
 
                     try {
@@ -140,7 +144,7 @@ public class ApplyViewActivity extends AppCompatActivity {
                 ContentValues values = new ContentValues();
                 values.put("seq", seqText);
 
-                NetworkTask networkTask = new NetworkTask("http://175.212.211.98:8008/deletedelivery", values);
+                NetworkTask networkTask = new NetworkTask(localIp+"/deletedelivery", values);
                 networkTask.execute();
 
                 try {
@@ -169,7 +173,7 @@ public class ApplyViewActivity extends AppCompatActivity {
             ContentValues values = new ContentValues();
             values.put("seq", seq);
 
-            NetworkTask networkTask = new NetworkTask("http://175.212.211.98:8008/applyview", values);
+            NetworkTask networkTask = new NetworkTask(localIp+"/applyview", values);
             networkTask.execute();
         }
     }
