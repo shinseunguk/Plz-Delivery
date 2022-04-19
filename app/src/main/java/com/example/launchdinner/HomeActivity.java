@@ -288,7 +288,7 @@ public class HomeActivity extends AppCompatActivity {
                             fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Third")).commit();
                         }
                         if(fragmentManager.findFragmentByTag("fourth") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("foruth")).commit();
+                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("fourth")).commit();
                         }
                         return true;
 
