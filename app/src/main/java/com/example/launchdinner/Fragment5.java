@@ -51,6 +51,7 @@ public class Fragment5 extends ListFragment {
                 goTheCheat();
             break;
             case 1:
+                declarationAction();
             break;
             case 2:
             break;
@@ -89,6 +90,11 @@ public class Fragment5 extends ListFragment {
 
     public void goTheCheat() {
         Intent intent = new Intent(getActivity(), WebviewActivity.class);
+        startActivity(intent);
+    }
+
+    public void declarationAction() {
+        Intent intent = new Intent(getActivity(), DeclarationActivity.class);
         startActivity(intent);
     }
 }

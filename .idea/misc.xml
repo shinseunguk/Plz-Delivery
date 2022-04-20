@@ -9,6 +9,8 @@
         <entry key="app/src/main/res/drawable/ic_baseline_person_pin_24.xml" value="0.284375" />
         <entry key="app/src/main/res/layout/activity_address.xml" value="0.1503623188405797" />
         <entry key="app/src/main/res/layout/activity_apply_view.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_board_write.xml" value="0.40601475109869245" />
+        <entry key="app/src/main/res/layout/activity_declaration.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_kakao_map_view.xml" value="0.3338541666666667" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3338541666666667" />
@@ -27,6 +29,7 @@
         <entry key="app/src/main/res/layout/listview_item.xml" value="0.265625" />
         <entry key="app/src/main/res/layout/listview_item2.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_navigation.xml" value="0.2125" />
+        <entry key="app/src/main/res/xml/edit_text_border.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.3338541666666667" />
       </map>
     </option>

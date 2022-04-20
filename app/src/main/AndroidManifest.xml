@@ -13,30 +13,42 @@
         android:label="@string/app_name"
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/Theme.Launchdinner"
-        android:screenOrientation="portrait"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".WebviewActivity"
-            android:screenOrientation="portrait"
+            android:name=".DeclarationActivity"
             android:exported="true" />
-        <activity android:name=".KakaoMapViewActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".ApplyViewActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".BoardWriteActivity"
+            android:exported="true" />
+        <activity
+            android:name=".WebviewActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".KakaoMapViewActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ApplyViewActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="9e2ef8e16a27dfce871331354795f185" />
 
-        <activity android:name=".HomeActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".addressActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".registerActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".HomeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".addressActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".registerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,8 +56,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
