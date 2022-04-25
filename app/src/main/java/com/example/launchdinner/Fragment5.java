@@ -22,6 +22,8 @@ public class Fragment5 extends ListFragment {
     ListViewAdapter adapter ;
     String localIp;
 
+    private static final String LOG_TAG = "Fragment5";
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,7 +35,7 @@ public class Fragment5 extends ListFragment {
         Log.d("localIp ", localIp);
 
 
-        String[] values = new String[] {"더치트 검색", "신고하기", "블랙리스트", "로그아웃"};
+        String[] values = new String[] {"더치트 검색", "신고하기", "로그아웃"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
         setListAdapter(adapter);
 
@@ -54,11 +56,11 @@ public class Fragment5 extends ListFragment {
                 declarationAction();
             break;
             case 2:
-            break;
-            case 3:
                 logout();
             break;
-
+            default:
+                Log.d(LOG_TAG,"default");
+            break;
         }
     }
 
