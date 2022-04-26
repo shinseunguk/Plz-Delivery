@@ -28,14 +28,14 @@ public class Fragment5 extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View v =inflater.inflate(R.layout.fragment_5, container, false);
+        View v = inflater.inflate(R.layout.fragment_5, container, false);
 //        ListView listView = (ListView) v.findViewById(android.R.id.list);
 //        FrameLayout fr = (FrameLayout) v.findViewById(R.id.FragmentFive);
         localIp = getString(R.string.localip);
         Log.d("localIp ", localIp);
 
 
-        String[] values = new String[] {"더치트 검색", "신고하기", "로그아웃"};
+        String[] values = new String[]{"더치트 검색", "신고하기", "로그아웃"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
         setListAdapter(adapter);
 
@@ -43,24 +43,24 @@ public class Fragment5 extends ListFragment {
     }
 
     @Override
-    public void onListItemClick(ListView l, View v, int position, long id){
+    public void onListItemClick(ListView l, View v, int position, long id) {
         String strText = (String) l.getItemAtPosition(position);
-        Log.d("Fragment: ", position + ": " +strText);
+        Log.d("Fragment: ", position + ": " + strText);
 //        Toast.makeText(this.getContext(), "클릭: " + position +" " + strText, Toast.LENGTH_SHORT).show();
 
         switch (position) {
             case 0:
                 goTheCheat();
-            break;
+                break;
             case 1:
                 declarationAction();
-            break;
+                break;
             case 2:
                 logout();
-            break;
+                break;
             default:
-                Log.d(LOG_TAG,"default");
-            break;
+                Log.d(LOG_TAG, "default");
+                break;
         }
     }
 
