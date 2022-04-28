@@ -1,10 +1,7 @@
 package com.example.launchdinner;
 
-import android.app.Activity;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -31,7 +28,6 @@ import org.json.JSONObject;
 import java.util.concurrent.ExecutionException;
 
 public class Fragment3 extends Fragment {
-    String LOG_TAG = "Fragment3";
 
     JSONArray jsonArray = null;
 
@@ -65,11 +61,7 @@ public class Fragment3 extends Fragment {
         editTel.setInputType(InputType.TYPE_CLASS_PHONE);
         editTel.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 
-        SharedPreferences preferences = this.getActivity().getSharedPreferences("Preferenceszz", Context.MODE_PRIVATE);
-        String userId = preferences.getString("id", "id");
-
         ContentValues values = new ContentValues();
-        values.put("id", userId);
 
         NetworkTask networkTask = new NetworkTask(localIp+"/checkbox", values);
         networkTask.execute();
