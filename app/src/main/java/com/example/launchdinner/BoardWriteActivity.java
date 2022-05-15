@@ -93,7 +93,7 @@ public class BoardWriteActivity extends AppCompatActivity {
 
             //영재한테 변수명 물어보기
             values.put("server", "board");
-            values.put("writer", myId);
+            values.put("member", myId);
             values.put("title", title);
             values.put("content", content);
             values.put("date", date);
@@ -109,7 +109,7 @@ public class BoardWriteActivity extends AppCompatActivity {
         content = boardContent.getText().toString();
         date = boardDate.getText().toString();
 
-        Log.d(LOG_TAG, "myId ----> "+myId);
+        Log.d(LOG_TAG, "member ----> "+myId);
         Log.d(LOG_TAG, "title ----> "+title);
         Log.d(LOG_TAG, "content ----> "+content);
         Log.d(LOG_TAG, "date ----> "+date);
