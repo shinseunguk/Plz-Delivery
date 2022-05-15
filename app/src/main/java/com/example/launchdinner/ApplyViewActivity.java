@@ -34,6 +34,9 @@ public class ApplyViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apply_view);
 
+        localIp = getString(R.string.localip);
+        Log.d("localIp ", localIp);
+
         SharedPreferences pref = getSharedPreferences("Preferenceszz", Activity.MODE_PRIVATE);
         loginId = pref.getString("id", "id");
 
@@ -64,9 +67,6 @@ public class ApplyViewActivity extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 Log.d("click",start_address1 + start_address2);
-
-                localIp = getString(R.string.localip);
-                Log.d("localIp ", localIp);
 //                start_address1 = json.getString("start_address1");
 //                start_address2 = json.getString("start_address2");
 //                end_address1 = json.getString("end_address1");

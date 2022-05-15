@@ -1,10 +1,12 @@
 package com.example.launchdinner;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -246,7 +248,8 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
                 ) {
                     Toast.makeText(getActivity(),"빈칸없이 작성 해주세요",Toast.LENGTH_SHORT).show();
                 }else{
-
+                    SharedPreferences preferences = this.getActivity().getSharedPreferences("Preferenceszz", Context.MODE_PRIVATE);
+                    String userId = preferences.getString("id", "id");
 
                     ContentValues values = new ContentValues();
 
@@ -263,6 +266,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
                     values.put("arriveTel", sArriveTel);
                     values.put("startingDate", startingDate);
                     values.put("endingDate", EndingDate);
+                    values.put("applyId", userId);
 
                     NetworkTask networkTask = new NetworkTask(localIp+"/apply", values);
                     networkTask.execute();
