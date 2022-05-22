@@ -18,19 +18,20 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         tools:ignore="MissingConstraints">
-        <LinearLayout
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/revise"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:onClick="imageClick"
-                android:src="@drawable/ic_baseline_more_horiz_24"
-                tools:ignore="OnClick" />
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:spinnerMode="dropdown"
+                android:background="@android:color/transparent"
+                />
 
-        </LinearLayout>
+        </RelativeLayout>
 
     </LinearLayout>
 
