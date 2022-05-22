@@ -18,6 +18,9 @@
         android:theme="@style/Theme.Launchdinner"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".BoardDetailActivity"
+            android:exported="true" />
+        <activity
             android:name=".DeclarationActivity"
             android:exported="true" />
         <activity

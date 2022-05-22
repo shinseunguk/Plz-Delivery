@@ -36,7 +36,7 @@ import java.util.concurrent.ExecutionException;
 
 public class Fragment2 extends ListFragment {
 
-    ListViewAdapter adapter ;
+    ListViewAdapter adapter;
     ViewPager viewPager;
     TabLayout tabLayout;
     String localIp;

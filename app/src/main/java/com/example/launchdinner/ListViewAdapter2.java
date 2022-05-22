@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 public class ListViewAdapter2 extends BaseAdapter {
 
     Context mContext;
+    long id;
 
     // Adapter에 추가된 데이터를 저장하기 위한 ArrayList
     private ArrayList<Board> listViewItemList = new ArrayList<Board>() ;
@@ -52,14 +54,22 @@ public class ListViewAdapter2 extends BaseAdapter {
         LinearLayout cmdArea = (LinearLayout) convertView.findViewById(R.id.cmdArea2);
         cmdArea.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
+                Log.d("onClick", "123");
+
+                id = listViewItemList.get(pos).getId();
+
+                Intent intent = new Intent(v.getContext() , BoardDetailActivity.class);
+                intent.putExtra("id", id);
+
+                context.startActivity(intent);
                 //거래 번호 - 2
 //                String substr = listViewItemList.get(pos).getSeq().substring(8);
 //                Toast.makeText(v.getContext(), substr, Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(v.getContext(), ApplyViewActivity.class);
+//                Intent intent = new Intent(v.getContext(), ApplyViewActivity.class);
 //                intent.putExtra("seq", substr);
 
-                context.startActivity(intent);
+//                context.startActivity(intent);
             }
         });
 
@@ -74,9 +84,8 @@ public class ListViewAdapter2 extends BaseAdapter {
 
         // 아이템 내 각 위젯에 데이터 반영
         titleTextView.setText(listViewItem.getTitle());
-//        descTextView1.setText(listViewItem.getUser_id());
-//        descTextView2.setText(listViewItem.getTime());
-
+        descTextView1.setText(listViewItem.getComusermVO());
+        descTextView2.setText(listViewItem.getLocalDateTime());
         return convertView;
     }
 
@@ -95,21 +104,14 @@ public class ListViewAdapter2 extends BaseAdapter {
     }
 
     // 아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
-    public void addItem(String title, String desc1, String desc2, String desc3, String desc4, String desc5, String desc6) {
+    public void addItem(String title, String desc1, String desc2) {
         Board item = new Board();
 
-//        item.setStartAddress(title);
-//        item.setEndAddress(desc1);
-//        item.setDeparture_time(desc2);
-//        item.setArrive_time(desc3);
-//        item.setExchange_item(desc4);
-//        item.setSeq(desc5);
 //
-//        item.setSeq();
-//        item.setTitle();
-//        item.setContent();
-//        item.setUser_id();
-//        item.setTime();
+        item.setTitle(title);
+//        item.setContent(desc1);
+        item.setLocalDateTime(desc1);
+        item.setComusermVO(desc2);
 //
 //
 //        // 진행상태

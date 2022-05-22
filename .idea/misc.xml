@@ -4,14 +4,20 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.19895833333333332" />
+        <entry key="app/src/main/res/drawable-v24/red_edittext.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/drawable/edit_text_border.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/drawable/ic_baseline_bike_scooter_24.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/drawable/ic_baseline_chat_24.xml" value="0.13229166666666667" />
         <entry key="app/src/main/res/drawable/ic_baseline_developer_board_24.xml" value="0.23177083333333334" />
+        <entry key="app/src/main/res/drawable/ic_baseline_pending_24.xml" value="0.13229166666666667" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.284375" />
         <entry key="app/src/main/res/drawable/ic_baseline_person_pin_24.xml" value="0.284375" />
         <entry key="app/src/main/res/layout/activity_address.xml" value="0.1503623188405797" />
         <entry key="app/src/main/res/layout/activity_apply_view.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_board_write.xml" value="0.40601475109869245" />
+        <entry key="app/src/main/res/layout/activity_board_detail.xml" value="0.23473684210526316" />
+        <entry key="app/src/main/res/layout/activity_board_write.xml" value="0.31721194879089615" />
         <entry key="app/src/main/res/layout/activity_declaration.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.13909836258668837" />
         <entry key="app/src/main/res/layout/activity_kakao_map_view.xml" value="0.3338541666666667" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3338541666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1503623188405797" />
@@ -27,7 +33,7 @@
         <entry key="app/src/main/res/layout/fragment_4.xml" value="0.23541666666666666" />
         <entry key="app/src/main/res/layout/fragment_5.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/listview_item.xml" value="0.265625" />
-        <entry key="app/src/main/res/layout/listview_item2.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/listview_item2.xml" value="0.2588744376689222" />
         <entry key="app/src/main/res/menu/bottom_navigation.xml" value="0.2125" />
         <entry key="app/src/main/res/xml/edit_text_border.xml" value="0.23385416666666667" />
         <entry key="app/src/main/res/xml/network_security_config.xml" value="0.3338541666666667" />

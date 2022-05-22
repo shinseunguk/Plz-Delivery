@@ -98,7 +98,7 @@ public class BoardWriteActivity extends AppCompatActivity {
             values.put("content", content);
             values.put("date", date);
 
-            NetworkTask networkTask = new NetworkTask(localIp+"/board/write", values);
+            NetworkTask networkTask = new NetworkTask(localIp+"/boardWrite", values);
             networkTask.execute();
         }
     }
