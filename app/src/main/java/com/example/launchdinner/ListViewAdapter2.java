@@ -54,9 +54,9 @@ public class ListViewAdapter2 extends BaseAdapter {
         LinearLayout cmdArea = (LinearLayout) convertView.findViewById(R.id.cmdArea2);
         cmdArea.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
-                Log.d("onClick", "123");
 
                 id = listViewItemList.get(pos).getId();
+                Log.d("onClick", String.valueOf(id)+"!!!!!!!!!!!!!!!!!");
 
                 Intent intent = new Intent(v.getContext() , BoardDetailActivity.class);
                 intent.putExtra("id", id);
@@ -75,9 +75,10 @@ public class ListViewAdapter2 extends BaseAdapter {
 
 
         // 화면에 표시될 View(Layout이 inflate된)으로부터 위젯에 대한 참조 획득
-        TextView titleTextView = (TextView) convertView.findViewById(R.id.textView1) ; // 시작주소
-        TextView descTextView1 = (TextView) convertView.findViewById(R.id.textView2) ; // 받는주소
-        TextView descTextView2 = (TextView) convertView.findViewById(R.id.textView3) ; // 희망시간 1
+        TextView titleTextView = (TextView) convertView.findViewById(R.id.textView1) ;
+        TextView descTextView1 = (TextView) convertView.findViewById(R.id.textView2) ;
+        TextView descTextView2 = (TextView) convertView.findViewById(R.id.textView3) ;
+        TextView descTextView3 = (TextView) convertView.findViewById(R.id.textView4) ;
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
         Board listViewItem = listViewItemList.get(0);
@@ -86,6 +87,8 @@ public class ListViewAdapter2 extends BaseAdapter {
         titleTextView.setText(listViewItem.getTitle());
         descTextView1.setText(listViewItem.getComusermVO());
         descTextView2.setText(listViewItem.getLocalDateTime());
+        descTextView3.setText(String.valueOf(listViewItem.getId()));
+
         return convertView;
     }
 
@@ -104,7 +107,7 @@ public class ListViewAdapter2 extends BaseAdapter {
     }
 
     // 아이템 데이터 추가를 위한 함수. 개발자가 원하는대로 작성 가능.
-    public void addItem(String title, String desc1, String desc2) {
+    public void addItem(String title, String desc1, String desc2, long id) {
         Board item = new Board();
 
 //
@@ -112,6 +115,7 @@ public class ListViewAdapter2 extends BaseAdapter {
 //        item.setContent(desc1);
         item.setLocalDateTime(desc1);
         item.setComusermVO(desc2);
+        item.setId(id);
 //
 //
 //        // 진행상태

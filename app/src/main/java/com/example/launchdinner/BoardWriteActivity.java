@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -25,10 +27,12 @@ public class BoardWriteActivity extends AppCompatActivity {
     String localIp;
 
     EditText writer, boardTitle, boardContent;
-    TextView boardDate;
+    TextView boardDate, writeTitle;
+    Button btnDeclare;
 
     String userId;
     String myId, title, content, date;
+    long id;
 
     boolean result = false;
 
@@ -45,7 +49,22 @@ public class BoardWriteActivity extends AppCompatActivity {
         boardContent = findViewById(R.id.boardContent);
         boardDate = findViewById(R.id.boardDate);
 
+        btnDeclare = findViewById(R.id.btnDeclare);
+        writeTitle = findViewById(R.id.writeTitle);
+
         init(); //로그인 ID setting
+
+        if(getIntent() != null){
+            Intent intent = getIntent();
+            id = intent.getLongExtra("id", 1111111111);
+            title = intent.getStringExtra("title");
+            content = intent.getStringExtra("content");
+
+            boardTitle.setText(title);
+            boardContent.setText(content);
+            btnDeclare.setText("게시판 수정");
+            writeTitle.setText("게시판 수정");
+        }
     }
 
     //로그인 ID setting
@@ -87,20 +106,40 @@ public class BoardWriteActivity extends AppCompatActivity {
     }
 
     public void sendBoard(View view) {
-        Log.d(LOG_TAG, "게시판 작성");
-        if(effectiveness()){
-            ContentValues values = new ContentValues();
+        String btnTitle = btnDeclare.getText().toString();
 
-            //영재한테 변수명 물어보기
-            values.put("server", "board");
-            values.put("member", myId);
-            values.put("title", title);
-            values.put("content", content);
-            values.put("date", date);
+        if(btnTitle.equals("게시판 작성")){
+            Log.d(LOG_TAG, "게시판 작성");
+            if(effectiveness()){
+                ContentValues values = new ContentValues();
 
-            NetworkTask networkTask = new NetworkTask(localIp+"/boardWrite", values);
-            networkTask.execute();
+                //영재한테 변수명 물어보기
+                values.put("server", "board");
+                values.put("member", myId);
+                values.put("title", title);
+                values.put("content", content);
+                values.put("date", date);
+
+                NetworkTask networkTask = new NetworkTask(localIp+"/boardWrite", values);
+                networkTask.execute();
+            }
+        }else {
+            Log.d(LOG_TAG, "게시판 수정");
+            if(effectiveness()){
+                ContentValues values = new ContentValues();
+
+                //영재한테 변수명 물어보기
+                values.put("server", "board");
+                values.put("member", myId);
+                values.put("title", title);
+                values.put("content", content);
+                values.put("date", date);
+
+                NetworkTask networkTask = new NetworkTask(localIp+"/boardEdit", values);
+                networkTask.execute();
+            }
         }
+
     }
 
     public boolean effectiveness(){

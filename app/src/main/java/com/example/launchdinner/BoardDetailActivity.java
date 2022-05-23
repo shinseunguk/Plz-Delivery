@@ -55,7 +55,6 @@ public class BoardDetailActivity extends AppCompatActivity {
 
         spinner = (Spinner) findViewById(R.id.spinner2);
 
-        spinner.setSelection(0);
         //스피너 어뎁터
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, items);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -67,20 +66,28 @@ public class BoardDetailActivity extends AppCompatActivity {
                 if(i != 0){
                     if(i == 1){ // 게시판 수정 boardEdit
                         Log.d(LOG_TAG, "게시판 수정");
-
-                        Intent intent = new Intent(BoardDetailActivity.this, HomeActivity.class);
-                        intent.putExtra("index", "fragment4");
+                        Intent intent = new Intent(BoardDetailActivity.this, BoardWriteActivity.class);
+                        intent.putExtra("id", id);
+                        intent.putExtra("title", title.getText().toString());
+                        intent.putExtra("content", content.getText().toString());
+                        intent.putExtra("writer", writer.getText().toString());
+                        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }else if(i == 2){ // 게시판 삭제
-//                        ContentValues values = new ContentValues();
-//                        values.put("id", id);
-//
-//                        NetworkTask1 networkTask1 = new NetworkTask1(localIp+"/boardDelete", values);
-//                        networkTask1.execute();
+                        ContentValues values = new ContentValues();
+                        values.put("id", id);
 
-                        Intent intent = new Intent(BoardDetailActivity.this, HomeActivity.class);
-                        intent.putExtra("index", "fragment4");
-                        startActivity(intent);
+                        NetworkTask2 networkTask2 = new NetworkTask2(localIp+"/boardDelete", values);
+                        networkTask2.execute();
+
+                        // 테스트
+//                        Intent intent = new Intent(BoardDetailActivity.this, HomeActivity.class);
+//                        intent.putExtra("index", "fragment4");
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                        startActivity(intent);
+
                     }
                 }
             }
@@ -90,16 +97,14 @@ public class BoardDetailActivity extends AppCompatActivity {
         });
 
 
-//        imageView = findViewById(R.id.revise);
-//        imageView.setClickable(true);
-//        imageView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.d("ddd", "asdasd");
-//            }
-//        });
+    }
 
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // 화면 기능을 실행할 준비를 함ㅁ
+//        Toast.makeText(getApplicationContext(), "onStart() 호출됨", Toast.LENGTH_LONG).show();
+        spinner.setSelection(0);
     }
 
     public void init(){
@@ -163,10 +168,10 @@ public class BoardDetailActivity extends AppCompatActivity {
 
                 Log.d(LOG_TAG+"result" , json.getString("comuserm_id"));
 
-                if(userId == json.getString("comuserm_id")){
-                    imageView.setVisibility(View.VISIBLE);
+                if(userId.equals(json.getString("comuserm_id"))){
+                    spinner.setVisibility(View.VISIBLE);
                 }else {
-                    imageView.setVisibility(View.INVISIBLE);
+                    spinner.setVisibility(View.INVISIBLE);
                 }
 
                 //금액 format
@@ -182,18 +187,18 @@ public class BoardDetailActivity extends AppCompatActivity {
         }
     }
 
-    public class NetworkTask1 extends AsyncTask<Void, Void, String> {
+    public class NetworkTask2 extends AsyncTask<Void, Void, String> {
 
         String url;
         ContentValues values;
 
-        NetworkTask1(String url, ContentValues values)
+        NetworkTask2(String url, ContentValues values)
         {
             this.url = url;
             this.values = values;
         }
 
-        NetworkTask1(String url)
+        NetworkTask2(String url)
         {
             this.url = url;
             this.values = values;
@@ -219,9 +224,13 @@ public class BoardDetailActivity extends AppCompatActivity {
             Log.d(LOG_TAG, result);
 
             if(result.equals("false")){ // 삭제 실패
-
+                sToast("삭제 실패");
             }else{ // 삭제 성공
-
+                Intent intent = new Intent(BoardDetailActivity.this, HomeActivity.class);
+                intent.putExtra("index", "fragment4");
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
             }
         }
     }

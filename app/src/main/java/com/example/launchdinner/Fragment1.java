@@ -273,6 +273,8 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
 
                     intent = new Intent(getActivity(), HomeActivity.class);
                     intent.putExtra("index", "fragment2");
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 }
 

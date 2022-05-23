@@ -68,14 +68,14 @@ public class Fragment4 extends ListFragment{
                 JSONArray jsonArray = new JSONArray(networkTask.get());
 
                 if(jsonArray.length() == 0){
-                    Toast.makeText(getActivity(),"요청된 직거래가 없습니다",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"작성된 게시글이 없습니다.",Toast.LENGTH_SHORT).show();
                 }else{
                     for(int i = 0 ; i < jsonArray.length() ; i++){
                         JSONObject jsonObject = jsonArray.getJSONObject(i); //i번째 Json데이터를 가져옴
 //                        Log.d("dd",jsonObject.getString("start_address1"));
 //                        adapter.addItem("시작주소  -  " + jsonObject.getString("start_address1")+" "+jsonObject.getString("start_address2"),"받는주소  -  " + jsonObject.getString("end_address1")+ " "+ jsonObject.getString("end_address2"),"희망 수거 시간  -  " + jsonObject.getString("departure_time"), jsonObject.getString("arrive_time"),"거래 물품  -  " + jsonObject.getString("exchange_item"), "거래 번호 - "+  jsonObject.getString("seq"), jsonObject.getString("delivery_yn"));
-//                        adapter.addItem(jsonObject.getString("title"), jsonObject.getString("localDateTime"), "작성자 : "+ jsonObject.getString("comusermVO"));
-                        adapter.addItem("아진짜 자고싶다!!~!~!~", "2021/04/18" , "작성자 : 테스트");
+//                        adapter.addItem(jsonObject.getString("title"), jsonObject.getString("localDateTime"), "작성자 : "+ jsonObject.getString("comusermVO"), jsonObject.getLong("id"));
+                        adapter.addItem("아진짜 자고싶다!!~!~!~", "2021/04/18" , "작성자 : 테스트", 21341231);
                     }
 //                    listView.getLayoutParams().height = jsonArray.length() * 100;
                 }
