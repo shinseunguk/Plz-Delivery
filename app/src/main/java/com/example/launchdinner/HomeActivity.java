@@ -63,7 +63,7 @@ public class HomeActivity extends AppCompatActivity {
                     String intentIndex =intent.getStringExtra("index");
                     Log.d("intentIndex.....1 ", intentIndex);
                     if(intentIndex.equals("fragment2")){
-                        fragmentManager.beginTransaction().add(R.id.main_layout, fragment2, "second").commit();
+                        fragmentManager.beginTransaction().replace(R.id.main_layout, fragment2, "second").commit();
                         bottomNavigationView.setSelectedItemId(R.id.tab2);
                         tabLayout.addTab(tabLayout.newTab().setText("배달원 모집중"));
                         tabLayout.addTab(tabLayout.newTab().setText("내 직거래 신청 목록"));
@@ -72,11 +72,11 @@ public class HomeActivity extends AppCompatActivity {
                     }else if(intentIndex.equals("fragment4")){
                         Log.d("intentIndex.....2 ", intentIndex);
                         bottomNavigationView.setSelectedItemId(R.id.tab4);
-                        fragmentManager.beginTransaction().add(R.id.main_layout, fragment4, "fourth").commit();
+                        fragmentManager.beginTransaction().replace(R.id.main_layout, fragment4, "fourth").commit();
                     }
 
                 }else{// 어플 첫 진입시
-                    fragmentManager.beginTransaction().add(R.id.main_layout, fragment2, "second").commit();
+                    fragmentManager.beginTransaction().replace(R.id.main_layout, fragment2, "second").commit();
                     bottomNavigationView.setSelectedItemId(R.id.tab2);  //선택된 아이템 지정
                     tabLayout.addTab(tabLayout.newTab().setText("배달원 모집중"));
                     tabLayout.addTab(tabLayout.newTab().setText("내 직거래 신청 목록"));
@@ -92,45 +92,15 @@ public class HomeActivity extends AppCompatActivity {
                 switch (tab.getPosition()) {
                     case 0:
                         Log.d("0","0");
-                        if(fragmentManager.findFragmentByTag("second") != null){
-                            fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("second")).commit();
-                        }else{
-                            fragmentManager.beginTransaction().add(R.id.main_layout, fragment2, "second").commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("Fragment2Second") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Second")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("Fragment2Third") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Third")).commit();
-                        }
+                            fragmentManager.beginTransaction().replace(R.id.main_layout, fragment2, "second").commit();
                         break;
                     case 1:
                         Log.d("1","1");
-                        if(fragmentManager.findFragmentByTag("Fragment2Second") != null){
-                            fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Fragment2Second")).commit();
-                        }else{
-                            fragmentManager.beginTransaction().add(R.id.main_layout, fragment2Second, "Fragment2Second").commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("second") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("second")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("Fragment2Third") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Third")).commit();
-                        }
+                            fragmentManager.beginTransaction().replace(R.id.main_layout, fragment2Second, "Fragment2Second").commit();
                         break;
                     case 2:
                         Log.d("2","2");
-                        if(fragmentManager.findFragmentByTag("Fragment2Third") != null){
-                            fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("Fragment2Third")).commit();
-                        }else{
-                            fragmentManager.beginTransaction().add(R.id.main_layout, fragment2Third, "Fragment2Third").commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("second") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("second")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("Fragment2Second") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Second")).commit();
-                        }
+                            fragmentManager.beginTransaction().replace(R.id.main_layout, fragment2Third, "Fragment2Third").commit();
                         break;
                 }
             }
@@ -157,29 +127,7 @@ public class HomeActivity extends AppCompatActivity {
                     //직거래 신청
                     case R.id.tab1: {
                         tabLayout.removeAllTabs();
-                        if(fragmentManager.findFragmentByTag("first") != null){
-                            fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("first")).commit();
-                        }else{
-                            fragmentManager.beginTransaction().add(R.id.main_layout, fragment1, "first").commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("second") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("second")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("third") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("third")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("fourth") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("fourth")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("Fragment2Second") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Second")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("Fragment2Third") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Third")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("fiveth") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("fiveth")).commit();
-                        }
+                            fragmentManager.beginTransaction().replace(R.id.main_layout, fragment1, "first").commit();
                         return true;
                     }
                     //배달
@@ -189,113 +137,25 @@ public class HomeActivity extends AppCompatActivity {
                         tabLayout.addTab(tabLayout.newTab().setText("내 직거래 신청 목록"));
 //                        tabLayout.addTab(tabLayout.newTab().setText("내 물건 진행상황"));
                         tabLayout.addTab(tabLayout.newTab().setText("내가 배달중인 직거래"));
-                        if(fragmentManager.findFragmentByTag("second") != null){
-                            fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("second")).commit();
-                        }else{
-                            fragmentManager.beginTransaction().add(R.id.main_layout, fragment2, "second").commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("first") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("first")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("third") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("third")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("fourth") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("fourth")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("Fragment2Second") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Second")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("Fragment2Third") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Third")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("fiveth") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("fiveth")).commit();
-                        }
+                        fragmentManager.beginTransaction().replace(R.id.main_layout, fragment2, "second").commit();
                         return true;
                     }
                     //홈
                     case R.id.tab3: {
                         tabLayout.removeAllTabs();
-                        if(fragmentManager.findFragmentByTag("third") != null){
-                            fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("third")).commit();
-                        }else{
-                            fragmentManager.beginTransaction().add(R.id.main_layout, fragment3, "third").commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("first") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("first")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("second") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("second")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("fourth") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("fourth")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("Fragment2Second") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Second")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("Fragment2Third") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Third")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("fiveth") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("fiveth")).commit();
-                        }
+                        fragmentManager.beginTransaction().replace(R.id.main_layout, fragment3, "third").commit();
                         return true;
                     }
                     //게시판
                     case R.id.tab4: {
                         tabLayout.removeAllTabs();
-                        if(fragmentManager.findFragmentByTag("fourth") != null){
-                            fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("fourth")).commit();
-                        }else{
-                            fragmentManager.beginTransaction().add(R.id.main_layout, fragment4, "fourth").commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("first") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("first")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("third") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("third")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("second") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("second")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("Fragment2Second") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Second")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("Fragment2Third") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Third")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("fiveth") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("fiveth")).commit();
-                        }
+                        fragmentManager.beginTransaction().replace(R.id.main_layout, fragment4, "fourth").commit();
                         return true;
                     }
                     //내정보
                     case R.id.tab5: {
                         tabLayout.removeAllTabs();
-                        if(fragmentManager.findFragmentByTag("fiveth") != null){
-                            fragmentManager.beginTransaction().show(fragmentManager.findFragmentByTag("fiveth")).commit();
-                        }else{
-                            fragmentManager.beginTransaction().add(R.id.main_layout, fragment5, "fiveth").commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("first") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("first")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("third") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("third")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("second") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("second")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("Fragment2Second") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Second")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("Fragment2Third") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("Fragment2Third")).commit();
-                        }
-                        if(fragmentManager.findFragmentByTag("fourth") != null){
-                            fragmentManager.beginTransaction().hide(fragmentManager.findFragmentByTag("fourth")).commit();
-                        }
+                        fragmentManager.beginTransaction().replace(R.id.main_layout, fragment5, "fiveth").commit();
                         return true;
 
 //                        sToast("정상적으로 로그아웃되었습니다");
