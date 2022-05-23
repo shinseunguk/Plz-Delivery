@@ -61,14 +61,20 @@ public class HomeActivity extends AppCompatActivity {
                 Intent intent = getIntent();
                 if(intent.getStringExtra("index") != null){ // 직거래 신청 후
                     String intentIndex =intent.getStringExtra("index");
-                    Log.d("intentIndex..... ", intentIndex);
-
-                    fragmentManager.beginTransaction().add(R.id.main_layout, fragment2, "second").commit();
-                    bottomNavigationView.setSelectedItemId(R.id.tab2);
-                    tabLayout.addTab(tabLayout.newTab().setText("배달원 모집중"));
-                    tabLayout.addTab(tabLayout.newTab().setText("내 직거래 신청 목록"));
+                    Log.d("intentIndex.....1 ", intentIndex);
+                    if(intentIndex.equals("fragment2")){
+                        fragmentManager.beginTransaction().add(R.id.main_layout, fragment2, "second").commit();
+                        bottomNavigationView.setSelectedItemId(R.id.tab2);
+                        tabLayout.addTab(tabLayout.newTab().setText("배달원 모집중"));
+                        tabLayout.addTab(tabLayout.newTab().setText("내 직거래 신청 목록"));
 //                    tabLayout.addTab(tabLayout.newTab().setText("내 물건 진행상황"));
-                    tabLayout.addTab(tabLayout.newTab().setText("내가 배달중인 직거래"));
+                        tabLayout.addTab(tabLayout.newTab().setText("내가 배달중인 직거래"));
+                    }else if(intentIndex.equals("fragment4")){
+                        Log.d("intentIndex.....2 ", intentIndex);
+                        bottomNavigationView.setSelectedItemId(R.id.tab4);
+                        fragmentManager.beginTransaction().add(R.id.main_layout, fragment4, "fourth").commit();
+                    }
+
                 }else{// 어플 첫 진입시
                     fragmentManager.beginTransaction().add(R.id.main_layout, fragment2, "second").commit();
                     bottomNavigationView.setSelectedItemId(R.id.tab2);  //선택된 아이템 지정

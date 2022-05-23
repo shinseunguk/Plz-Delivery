@@ -34,8 +34,9 @@ public class Fragment4 extends ListFragment{
 
         localIp = getString(R.string.localip);
 
+        Log.d(LOG_TAG, "onCreateView");
         // Inflate the layout for this fragment
-        View view =inflater.inflate(R.layout.fragment_4, container, false);
+        View view = inflater.inflate(R.layout.fragment_4, container, false);
         ListView listView = (ListView) view.findViewById(android.R.id.list);
         FrameLayout fr = (FrameLayout) view.findViewById(R.id.FragmentFourth);
         Button btnBoard = (Button) view.findViewById(R.id.btnBoard);

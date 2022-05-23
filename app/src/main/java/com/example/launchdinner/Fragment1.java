@@ -272,7 +272,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
                     networkTask.execute();
 
                     intent = new Intent(getActivity(), HomeActivity.class);
-                    intent.putExtra("index", "fragment1");
+                    intent.putExtra("index", "fragment2");
                     startActivity(intent);
                 }
 

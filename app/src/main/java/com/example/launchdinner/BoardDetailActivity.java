@@ -65,14 +65,22 @@ public class BoardDetailActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if(i != 0){
-                    if(i == 1){ // 게시판 수정
+                    if(i == 1){ // 게시판 수정 boardEdit
                         Log.d(LOG_TAG, "게시판 수정");
-                    }else if(i == 2){ // 게시판 삭제
-                        ContentValues values = new ContentValues();
-                        values.put("id", id);
 
-                        NetworkTask1 networkTask1 = new NetworkTask1(localIp+"/boardEdit", values);
-                        networkTask1.execute();
+                        Intent intent = new Intent(BoardDetailActivity.this, HomeActivity.class);
+                        intent.putExtra("index", "fragment4");
+                        startActivity(intent);
+                    }else if(i == 2){ // 게시판 삭제
+//                        ContentValues values = new ContentValues();
+//                        values.put("id", id);
+//
+//                        NetworkTask1 networkTask1 = new NetworkTask1(localIp+"/boardDelete", values);
+//                        networkTask1.execute();
+
+                        Intent intent = new Intent(BoardDetailActivity.this, HomeActivity.class);
+                        intent.putExtra("index", "fragment4");
+                        startActivity(intent);
                     }
                 }
             }
