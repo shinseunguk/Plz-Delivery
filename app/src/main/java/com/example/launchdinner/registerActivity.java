@@ -37,7 +37,7 @@ public class registerActivity extends AppCompatActivity {
     TextView tv_error_email;
     boolean idCheck = false;
 
-    String localIp = getString(R.string.localip);
+    String localIp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class registerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         Log.d("log","onCreate");
 //        task = new Task();
-
+        localIp = getString(R.string.localip);
         Log.d("localIp ", localIp);
 
         id = (EditText)findViewById(R.id.email);
