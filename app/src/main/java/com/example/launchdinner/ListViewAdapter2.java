@@ -81,7 +81,7 @@ public class ListViewAdapter2 extends BaseAdapter {
         TextView descTextView3 = (TextView) convertView.findViewById(R.id.textView4) ;
 
         // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
-        Board listViewItem = listViewItemList.get(0);
+        Board listViewItem = listViewItemList.get(position);
 
         // 아이템 내 각 위젯에 데이터 반영
         titleTextView.setText(listViewItem.getTitle());

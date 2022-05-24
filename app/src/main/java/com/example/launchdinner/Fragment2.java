@@ -69,7 +69,6 @@ public class Fragment2 extends ListFragment {
             Log.d("Fragment2 List",networkTask.get());
             try {
                 JSONArray jsonArray = new JSONArray(networkTask.get());
-
                 if(jsonArray.length() == 0){
                     Toast.makeText(getActivity(),"요청된 직거래가 없습니다",Toast.LENGTH_SHORT).show();
                 }else{

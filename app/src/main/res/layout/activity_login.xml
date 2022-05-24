@@ -65,7 +65,7 @@
                         android:text="ID"/>
 
                 <EditText
-                    android:text="qwe123@naver.com"
+                    android:text="newy12@naver.com"
                     android:id="@+id/editTextTextEmailAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
                         android:text="PASSWORD"/>
 
                     <EditText
-                        android:text="11111111"
+                        android:text="123"
                         android:id="@+id/editTextTextPassword2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

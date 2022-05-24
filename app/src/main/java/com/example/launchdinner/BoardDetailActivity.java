@@ -67,6 +67,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                     if(i == 1){ // 게시판 수정 boardEdit
                         Log.d(LOG_TAG, "게시판 수정");
                         Intent intent = new Intent(BoardDetailActivity.this, BoardWriteActivity.class);
+                        intent.putExtra("index", "revise");
                         intent.putExtra("id", id);
                         intent.putExtra("title", title.getText().toString());
                         intent.putExtra("content", content.getText().toString());
@@ -116,8 +117,9 @@ public class BoardDetailActivity extends AppCompatActivity {
             ContentValues values = new ContentValues();
             values.put("id", id);
 
-//            NetworkTask networkTask = new NetworkTask(localIp+"/boardDetail", values);
-//            networkTask.execute();
+            // 테스트
+            NetworkTask networkTask = new NetworkTask(localIp+"/boardDetail", values);
+            networkTask.execute();
         }
     }
 
@@ -166,9 +168,9 @@ public class BoardDetailActivity extends AppCompatActivity {
                 // result -> JSONObject 파싱 완료
                 JSONObject json = new JSONObject(result);
 
-                Log.d(LOG_TAG+"result" , json.getString("comuserm_id"));
+                Log.d(LOG_TAG+"result" , json.getString("member"));
 
-                if(userId.equals(json.getString("comuserm_id"))){
+                if(userId.equals(json.getString("member"))){
                     spinner.setVisibility(View.VISIBLE);
                 }else {
                     spinner.setVisibility(View.INVISIBLE);
@@ -177,8 +179,8 @@ public class BoardDetailActivity extends AppCompatActivity {
                 //금액 format
                 title.setText(json.getString("title")); // 제목
                 content.setText(json.getString("content"));// 내용
-                time.setText(json.getString("localDateTime"));// 시간
-                writer.setText(json.getString("comuserm_id"));// 작성자
+                time.setText("작성날짜  -  "+json.getString("localDateTime").substring(0,10).replaceAll("-","/"));// 시간
+                writer.setText("작성자  -  "+json.getString("member"));// 작성자
 
             } catch (JSONException e) {
                 e.printStackTrace();

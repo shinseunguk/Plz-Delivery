@@ -56,14 +56,16 @@ public class BoardWriteActivity extends AppCompatActivity {
 
         if(getIntent() != null){
             Intent intent = getIntent();
-            id = intent.getLongExtra("id", 1111111111);
-            title = intent.getStringExtra("title");
-            content = intent.getStringExtra("content");
+            if(intent.getStringExtra("index").equals("revise")){
+                id = intent.getLongExtra("id", 1111111111);
+                title = intent.getStringExtra("title");
+                content = intent.getStringExtra("content");
 
-            boardTitle.setText(title);
-            boardContent.setText(content);
-            btnDeclare.setText("게시판 수정");
-            writeTitle.setText("게시판 수정");
+                boardTitle.setText(title);
+                boardContent.setText(content);
+                btnDeclare.setText("게시판 수정");
+                writeTitle.setText("게시판 수정");
+            }
         }
     }
 
@@ -130,6 +132,7 @@ public class BoardWriteActivity extends AppCompatActivity {
 
                 //영재한테 변수명 물어보기
                 values.put("server", "board");
+                values.put("id", id);
                 values.put("member", myId);
                 values.put("title", title);
                 values.put("content", content);
@@ -207,7 +210,16 @@ public class BoardWriteActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            Log.d("click...result ", result);
+            Log.d(LOG_TAG+"!@#", result);
+            if(result.equals("true")){
+                Intent intent = new Intent(BoardWriteActivity.this, HomeActivity.class);
+                intent.putExtra("index", "fragment4");
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }else{
+                sToast("작성 실패");
+            }
         }
     }
 }

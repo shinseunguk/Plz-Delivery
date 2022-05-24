@@ -61,7 +61,7 @@ public class addressActivity extends AppCompatActivity {
         // web client 를 chrome 으로 설정
             webView.setWebChromeClient(new WebChromeClient());
             // webview url load
-            webView.loadUrl(localIp+"/address");
+            webView.loadUrl("http://175.196.226.213:8008/address");
     }
 
     private class AndroidBridge {
