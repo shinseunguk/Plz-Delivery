@@ -71,7 +71,7 @@ public class Fragment4 extends ListFragment{
                     Toast.makeText(getActivity(),"작성된 게시글이 없습니다.",Toast.LENGTH_SHORT).show();
                 }else{
                     for(int i = 0 ; i < jsonArray.length() ; i++){
-                        JSONObject jsonObject = jsonArray.getJSONObject(i); //i번째 Json데이터를 가져옴
+                        JSONObject jsonObject = jsonArray.getJSONObject(jsonArray.length()-(i+1)); //i번째 Json데이터를 가져옴
                         Log.d("jsonObject F4", jsonObject.getString("member"));
                         date = jsonObject.getString("localDateTime").substring(0,10).replaceAll("-","/");
                         adapter.addItem(jsonObject.getString("title"), date, "작성자 : "+ jsonObject.getString("member"), jsonObject.getLong("id"));
