@@ -26,7 +26,7 @@ import java.util.concurrent.ExecutionException;
 public class Fragment4 extends ListFragment{
     String LOG_TAG = "Fragment4";
     ListViewAdapter2 adapter;
-    String localIp;
+    String localIp, date;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,6 +47,7 @@ public class Fragment4 extends ListFragment{
                 Log.d("123","123!!!!!!!");
                 //게시판 작성으로 이동
                 Intent intent = new Intent(getActivity(), BoardWriteActivity.class);
+                intent.putExtra("index", "write");
                 startActivity(intent);
             }
         });
@@ -56,10 +57,9 @@ public class Fragment4 extends ListFragment{
         listView.setAdapter(adapter);
         setListAdapter(adapter) ;
 
-
         //이쯤에서 서버통신후 adapter.additem ~
-//        NetworkTask networkTask = new NetworkTask(localIp+"/boardList");
-        NetworkTask networkTask = new NetworkTask(localIp+"/applylist");
+        NetworkTask networkTask = new NetworkTask(localIp+"/boardList");
+//        NetworkTask networkTask = new NetworkTask(localIp+"/applylist");
         networkTask.execute();
 
         try {
@@ -72,10 +72,10 @@ public class Fragment4 extends ListFragment{
                 }else{
                     for(int i = 0 ; i < jsonArray.length() ; i++){
                         JSONObject jsonObject = jsonArray.getJSONObject(i); //i번째 Json데이터를 가져옴
-//                        Log.d("dd",jsonObject.getString("start_address1"));
-//                        adapter.addItem("시작주소  -  " + jsonObject.getString("start_address1")+" "+jsonObject.getString("start_address2"),"받는주소  -  " + jsonObject.getString("end_address1")+ " "+ jsonObject.getString("end_address2"),"희망 수거 시간  -  " + jsonObject.getString("departure_time"), jsonObject.getString("arrive_time"),"거래 물품  -  " + jsonObject.getString("exchange_item"), "거래 번호 - "+  jsonObject.getString("seq"), jsonObject.getString("delivery_yn"));
-//                        adapter.addItem(jsonObject.getString("title"), jsonObject.getString("localDateTime"), "작성자 : "+ jsonObject.getString("comusermVO"), jsonObject.getLong("id"));
-                        adapter.addItem("아진짜 자고싶다!!~!~!~", "2021/04/18" , "작성자 : 테스트", 21341231);
+                        Log.d("jsonObject F4", jsonObject.getString("member"));
+                        date = jsonObject.getString("localDateTime").substring(0,10).replaceAll("-","/");
+                        adapter.addItem(jsonObject.getString("title"), date, "작성자 : "+ jsonObject.getString("member"), jsonObject.getLong("id"));
+//                        adapter.addItem("아진짜 자고싶다!!~!~!~", "2021/04/18" , "작성자 : 테스트", 21341231);
                     }
 //                    listView.getLayoutParams().height = jsonArray.length() * 100;
                 }
@@ -122,6 +122,7 @@ public class Fragment4 extends ListFragment{
 
         @Override
         protected void onPostExecute(String result) {
+            Log.d(LOG_TAG+" onPostExecute", result);
             // 통신이 완료되면 호출됩니다.
             // 결과에 따른 UI 수정 등은 여기서 합니다.
         }
