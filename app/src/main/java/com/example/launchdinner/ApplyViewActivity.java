@@ -59,7 +59,6 @@ public class ApplyViewActivity extends AppCompatActivity {
         btnShowMipMap = findViewById(R.id.btnShowMipMap);
         btnDelivery = findViewById(R.id.btnDelivery);
         btnDelete = findViewById(R.id.btnDelete);
-        btnChat = findViewById(R.id.btnChat);
 
         btnDelete.setVisibility(View.GONE);
 

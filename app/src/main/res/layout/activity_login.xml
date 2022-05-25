@@ -65,7 +65,7 @@
                         android:text="ID"/>
 
                 <EditText
-                    android:text="newy12@naver.com"
+                    android:text="qwe123@naver.com"
                     android:id="@+id/editTextTextEmailAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
                         android:text="PASSWORD"/>
 
                     <EditText
-                        android:text="123"
+                        android:text="11111111"
                         android:id="@+id/editTextTextPassword2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -118,13 +118,6 @@
                     android:layout_gravity="center"
                     android:onClick="register"
                     android:text="이메일로 회원가입" />
-                <Button
-                    android:id="@+id/beLoginBtn"
-                    android:layout_width="300dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:onClick="beLogin"
-                    android:text="비회원 로그인" />
 
                 <ImageView
                     android:id="@+id/imageView"
