@@ -240,7 +240,6 @@ public class ApplyViewActivity extends AppCompatActivity {
                     Log.d("ApplyView..","1");
                     btnShowMipMap.setVisibility(View.GONE);
                     btnDelivery.setVisibility(View.GONE);
-                    btnChat.setVisibility(View.GONE);
 
                     btnDelete.setVisibility(View.VISIBLE);
                 }else if(loginId.equals(json.getString("delivery_id"))){

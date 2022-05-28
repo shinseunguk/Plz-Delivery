@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="게시판 제목"
+            android:text=""
             android:textSize="13dp"/>
 
     </LinearLayout>
@@ -71,7 +71,7 @@
             android:id="@+id/writer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="작성자 : krdut1@gmail.com"
+            android:text="작성자 : "
             android:textSize="13dp" />
 
         <TextView
@@ -79,7 +79,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="2021/04/18"
+            android:text=""
             android:textAlignment="center"
             android:textSize="13dp"/>
 
@@ -100,7 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="450dp"
             android:textSize="16dp"
-            android:text="wefjoiwejfioewjiownefoiniofnnnekvnklwnkle"
+            android:text=""
             />
 
     </LinearLayout>

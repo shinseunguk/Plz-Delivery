@@ -64,8 +64,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
+                android:layout_marginTop="10dp"
                 android:text="신고자 ID :"/>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
             <EditText
                 android:id="@+id/declarationId"
                 android:layout_width="match_parent"
@@ -74,6 +79,18 @@
                 android:textSize="16dp"
                 android:hint="이메일 형식으로 입력"
                 android:layout_marginLeft="20dp"/>
+
+            <TextView
+                android:id="@+id/tv_error_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FF0000"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_email"
+                />
+            </LinearLayout>
 
         </LinearLayout>
 

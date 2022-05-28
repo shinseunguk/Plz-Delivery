@@ -73,7 +73,7 @@ public class Fragment4 extends ListFragment{
                     for(int i = 0 ; i < jsonArray.length() ; i++){
                         JSONObject jsonObject = jsonArray.getJSONObject(jsonArray.length()-(i+1)); //i번째 Json데이터를 가져옴
                         Log.d("jsonObject F4", jsonObject.getString("member"));
-                        date = jsonObject.getString("localDateTime").substring(0,10).replaceAll("-","/");
+                        date = jsonObject.getString("localDateTime").replaceAll("-","/");
                         adapter.addItem(jsonObject.getString("title"), date, "작성자 : "+ jsonObject.getString("member"), jsonObject.getLong("id"));
 //                        adapter.addItem("아진짜 자고싶다!!~!~!~", "2021/04/18" , "작성자 : 테스트", 21341231);
                     }

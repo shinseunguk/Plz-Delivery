@@ -4,6 +4,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="kakao_app_key">9e2ef8e16a27dfce871331354795f185</string>
     <!--    <string name="localip">http://113.199.97.48:8080</string>-->
-<!--    <string name="localip">http://175.196.226.213:8008</string>-->
-    <string name="localip">http://175.121.70.33:8080</string>
+    <string name="localip">http://175.196.226.213:8008</string>
+<!--    <string name="localip">http://175.121.70.33:8080</string>-->
 </resources>

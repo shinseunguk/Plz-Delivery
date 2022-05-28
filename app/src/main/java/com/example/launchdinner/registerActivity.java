@@ -134,12 +134,12 @@ public class registerActivity extends AppCompatActivity {
             // 통신이 완료되면 호출됩니다.
             // 결과에 따른 UI 수정 등은 여기서 합니다.
 //            Toast.makeText(getApplicationContext(), result.getClass().getName()+" "+result, Toast.LENGTH_LONG).show();
-            if(result.equals("false")){
+            if(result.equals("true")){
                 tv_error_email.setText("사용가능한 아이디 입니다.");
                 tv_error_email.setTextColor(Color.rgb(0,147,33));
                 idCheck = true;
             }else{
-                tv_error_email.setText("이메일 형식으로 입력해주세요.");
+                tv_error_email.setText("이미 존재하는 아이디 입니다.");
                 tv_error_email.setTextColor(Color.parseColor("#FF0000"));
                 idCheck = false;
             }

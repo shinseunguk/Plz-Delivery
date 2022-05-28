@@ -23,7 +23,10 @@
             <ListView
                 android:id="@android:id/list"
                 android:layout_width="match_parent"
-                android:layout_height="1000dp"
+                android:layout_height="2000dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:dividerHeight="5dp"
                 android:layout_below="@+id/linearLayout"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"

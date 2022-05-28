@@ -179,7 +179,7 @@ public class BoardDetailActivity extends AppCompatActivity {
                 //금액 format
                 title.setText(json.getString("title")); // 제목
                 content.setText(json.getString("content"));// 내용
-                time.setText("작성날짜  -  "+json.getString("localDateTime").substring(0,10).replaceAll("-","/"));// 시간
+                time.setText("작성날짜  -  "+json.getString("localDateTime").replaceAll("-","/"));// 시간
                 writer.setText("작성자  -  "+json.getString("member"));// 작성자
 
             } catch (JSONException e) {

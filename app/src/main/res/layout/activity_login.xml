@@ -30,7 +30,6 @@
             android:layout_height="wrap_content"
             android:textSize="24sp"
             android:layout_gravity="center"
-            android:layout_marginTop="48sp"
             android:text="LOGIN" />
 
         <LinearLayout
@@ -65,7 +64,7 @@
                         android:text="ID"/>
 
                 <EditText
-                    android:text="qwe123@naver.com"
+                    android:text=""
                     android:id="@+id/editTextTextEmailAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -90,7 +89,7 @@
                         android:text="PASSWORD"/>
 
                     <EditText
-                        android:text="11111111"
+                        android:text=""
                         android:id="@+id/editTextTextPassword2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -119,37 +118,37 @@
                     android:onClick="register"
                     android:text="이메일로 회원가입" />
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="350dp"
-                    android:layout_height="71dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/and" />
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:layout_gravity="center"
-                    android:onClick="kakaoOnClick"
-                    android:src="@drawable/kakao"/>
-                <ImageView
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:layout_gravity="center"
-                    android:layout_marginHorizontal="50dp"
-                    android:onClick="facebookOnClick"
-                    android:src="@drawable/facebook"/>
-                <ImageView
-                    android:layout_width="65dp"
-                    android:layout_height="65dp"
-                    android:layout_gravity="center"
-                    android:onClick="naverOnClick"
-                    android:src="@drawable/naver"/>
-                </LinearLayout>
+<!--                <ImageView-->
+<!--                    android:id="@+id/imageView"-->
+<!--                    android:layout_width="350dp"-->
+<!--                    android:layout_height="71dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:src="@drawable/and" />-->
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:orientation="horizontal">-->
+<!--                <ImageView-->
+<!--                    android:layout_width="65dp"-->
+<!--                    android:layout_height="65dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:onClick="kakaoOnClick"-->
+<!--                    android:src="@drawable/kakao"/>-->
+<!--                <ImageView-->
+<!--                    android:layout_width="65dp"-->
+<!--                    android:layout_height="65dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:layout_marginHorizontal="50dp"-->
+<!--                    android:onClick="facebookOnClick"-->
+<!--                    android:src="@drawable/facebook"/>-->
+<!--                <ImageView-->
+<!--                    android:layout_width="65dp"-->
+<!--                    android:layout_height="65dp"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:onClick="naverOnClick"-->
+<!--                    android:src="@drawable/naver"/>-->
+<!--                </LinearLayout>-->
             </LinearLayout>
 
         </LinearLayout>

@@ -73,6 +73,10 @@ public class HomeActivity extends AppCompatActivity {
                         Log.d("intentIndex.....2 ", intentIndex);
                         bottomNavigationView.setSelectedItemId(R.id.tab4);
                         fragmentManager.beginTransaction().replace(R.id.main_layout, fragment4, "fourth").commit();
+                    }else if(intentIndex.equals("fragment5")){
+                        Log.d("intentIndex.....3 ", intentIndex);
+                        bottomNavigationView.setSelectedItemId(R.id.tab5);
+                        fragmentManager.beginTransaction().replace(R.id.main_layout, fragment5, "fiveth").commit();
                     }
 
                 }else{// 어플 첫 진입시
