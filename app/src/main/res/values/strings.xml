@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">launchdinner</string>
+    <string name="app_name">치타의 배달</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="kakao_app_key">9e2ef8e16a27dfce871331354795f185</string>
