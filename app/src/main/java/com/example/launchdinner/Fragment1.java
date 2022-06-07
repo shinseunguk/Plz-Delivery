@@ -50,7 +50,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
     int index = 0;
     Fragment2 fragment2;
     CheckBox checkBox;
-    String localIp;
+    String localIp, loginId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,6 +59,9 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         localIp = getString(R.string.localip);
         Log.d("localIp ", localIp);
+
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("Preferenceszz", Context.MODE_PRIVATE);
+        loginId = preferences.getString("id", "id");
 
         View v = inflater.inflate(R.layout.fragment_1, container, false);
         fragment2 = new Fragment2();
@@ -137,7 +140,11 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
 
             @Override
             public void onClick(View v) {
-                NetworkTask networkTask = new NetworkTask(localIp+"/checkbox");
+
+
+                ContentValues values = new ContentValues();
+                values.put("member", loginId);
+                NetworkTask networkTask = new NetworkTask(localIp+"/checkbox", values);
                 networkTask.execute();
 
 

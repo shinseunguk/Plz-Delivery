@@ -1,6 +1,8 @@
 package com.example.launchdinner;
 
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -23,7 +25,7 @@ import java.util.concurrent.ExecutionException;
 public class Fragment2Second extends ListFragment {
 
     ListViewAdapter adapter ;
-    String localIp;
+    String localIp, loginId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -41,8 +43,14 @@ public class Fragment2Second extends ListFragment {
         adapter = new ListViewAdapter(getActivity()) ;
         setListAdapter(adapter) ;
 
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("Preferenceszz", Context.MODE_PRIVATE);
+        loginId = preferences.getString("id", "id");
+
+        ContentValues values = new ContentValues();
+        values.put("member", loginId);
+
         //이쯤에서 서버통신후 adapter.additem ~
-        Fragment2Second.NetworkTask networkTask = new Fragment2Second.NetworkTask(localIp+"/myapplylist");
+        Fragment2Second.NetworkTask networkTask = new Fragment2Second.NetworkTask(localIp+"/myapplylist" ,values);
         networkTask.execute();
 
         try {
@@ -81,8 +89,9 @@ public class Fragment2Second extends ListFragment {
 
         private String mTitle = null;
 
-        NetworkTask(String url){
+        NetworkTask(String url, ContentValues values) {
             this.url = url;
+            this.values = values;
         }
 
         @Override

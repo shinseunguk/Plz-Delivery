@@ -1,6 +1,8 @@
 package com.example.launchdinner;
 
 import android.content.ContentValues;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -39,7 +41,7 @@ public class Fragment2 extends ListFragment {
     ListViewAdapter adapter;
     ViewPager viewPager;
     TabLayout tabLayout;
-    String localIp;
+    String localIp, loginId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -62,7 +64,13 @@ public class Fragment2 extends ListFragment {
 
 
         //이쯤에서 서버통신후 adapter.additem ~
-        NetworkTask networkTask = new NetworkTask(localIp+"/applylist");
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("Preferenceszz", Context.MODE_PRIVATE);
+        loginId = preferences.getString("id", "id");
+
+        ContentValues values = new ContentValues();
+        values.put("member", loginId);
+
+        NetworkTask networkTask = new NetworkTask(localIp+"/applylist", values);
         networkTask.execute();
 
         try {
@@ -136,8 +144,9 @@ public class Fragment2 extends ListFragment {
 
         private String mTitle = null;
 
-        NetworkTask(String url){
+        NetworkTask(String url, ContentValues values) {
             this.url = url;
+            this.values = values;
         }
 
         @Override

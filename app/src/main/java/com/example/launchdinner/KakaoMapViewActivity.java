@@ -74,7 +74,7 @@ public class KakaoMapViewActivity extends AppCompatActivity {
         }
 
         mMapView = new MapView(this);
-        mMapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
+//        mMapView.setCurrentLocationTrackingMode(MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeading);
 
 
 //        1. 위도, 경도 구하기
@@ -82,14 +82,14 @@ public class KakaoMapViewActivity extends AppCompatActivity {
 //        3. 마커 생성
 
         MapPOIItem marker1 = new MapPOIItem();
-        marker1.setItemName("출발지 \n"+ start_address1+" "+start_address2);
+        marker1.setItemName("출발지 \n"+ start_address1+"\n"+start_address2);
         marker1.setTag(0);
         marker1.setMapPoint(startMapPoint);
         marker1.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.
         marker1.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin); // 마커를 클릭했을때, 기본으로 제공하는 RedPin 마커 모양.
 
         MapPOIItem marker2 = new MapPOIItem();
-        marker2.setItemName("도착지 \n"+ end_address1+" "+end_address2);
+        marker2.setItemName("도착지 \n"+ end_address1+"\n"+end_address2);
         marker2.setTag(1);
         marker2.setMapPoint(endMapPoint);
         marker2.setMarkerType(MapPOIItem.MarkerType.BluePin); // 기본으로 제공하는 BluePin 마커 모양.

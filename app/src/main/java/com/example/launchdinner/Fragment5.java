@@ -35,7 +35,7 @@ public class Fragment5 extends ListFragment {
     TextView userInfoName, userInfoId;
 
     ListViewAdapter adapter ;
-    String localIp;
+    String localIp, loginId;
 
     private static final String LOG_TAG = "Fragment5";
 
@@ -49,12 +49,16 @@ public class Fragment5 extends ListFragment {
         localIp = getString(R.string.localip);
         Log.d("localIp ", localIp);
 
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("Preferenceszz", Context.MODE_PRIVATE);
+        loginId = preferences.getString("id", "id");
+
         userInfoId = v.findViewById(R.id.userInfoId);
         userInfoName = v.findViewById(R.id.userInfoName);
 
-        ContentValues contentValues = new ContentValues();
+        ContentValues cValues = new ContentValues();
+        cValues.put("member", loginId);
+        NetworkTask2 networkTask = new NetworkTask2(localIp+"/checkbox", cValues);
 
-        NetworkTask2 networkTask = new NetworkTask2(localIp+"/checkbox", contentValues);
         networkTask.execute();
 
         try {

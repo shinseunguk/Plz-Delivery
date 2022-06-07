@@ -1,7 +1,9 @@
 package com.example.launchdinner;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -34,7 +36,7 @@ public class Fragment3 extends Fragment {
     TextView userInfoName, userInfoId;
     EditText editName, editTel, editAddr1, editAddr2;
     Button btnAddr, btnModify;
-    String localIp;
+    String localIp, loginId;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,6 +45,9 @@ public class Fragment3 extends Fragment {
 
         localIp = getString(R.string.localip);
         Log.d("localIp ", localIp);
+
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("Preferenceszz", Context.MODE_PRIVATE);
+        loginId = preferences.getString("id", "id");
 
         //TextView
         userInfoName = (TextView) v.findViewById(R.id.userInfoName);
@@ -62,6 +67,7 @@ public class Fragment3 extends Fragment {
         editTel.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
 
         ContentValues values = new ContentValues();
+        values.put("member", loginId);
 
         NetworkTask networkTask = new NetworkTask(localIp+"/checkbox", values);
         networkTask.execute();
@@ -118,6 +124,7 @@ public class Fragment3 extends Fragment {
                     values.put("tel", tel);
                     values.put("address1", address1);
                     values.put("address2", address2);
+                    values.put("member", loginId);
 
                     Fragment3.NetworkTask networkTask = new Fragment3.NetworkTask(localIp+"/userinfo", values);
                     networkTask.execute();

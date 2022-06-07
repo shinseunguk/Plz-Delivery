@@ -89,6 +89,7 @@ public class ApplyViewActivity extends AppCompatActivity {
 
                     ContentValues values = new ContentValues();
                     values.put("seq", seqText);
+                    values.put("member", loginId);
 
                     NetworkTask networkTask = new NetworkTask(localIp+"/deliver", values);
                     networkTask.execute();
@@ -113,6 +114,7 @@ public class ApplyViewActivity extends AppCompatActivity {
 
                     ContentValues values = new ContentValues();
                     values.put("seq", seqText);
+                    values.put("member", loginId);
 
                     NetworkTask networkTask = new NetworkTask(localIp+"/deliverysuc", values);
                     networkTask.execute();
