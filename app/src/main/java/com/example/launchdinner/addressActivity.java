@@ -51,13 +51,6 @@ public class addressActivity extends AppCompatActivity {
             // 두 번째 파라미터는 사용될 php에도 동일하게 사용해야함
             webView.addJavascriptInterface(new AndroidBridge(), "launchdinner");
 
-        /* 2019.03.21 sjwiq200 Cross App Scripting 대비 */
-//            webView.getSettings().setDatabaseEnabled(false);
-//            webView.getSettings().setAllowFileAccess(false);
-//            webView.getSettings().setDomStorageEnabled(false);
-//            webView.getSettings().setAppCacheEnabled(false);
-
-
         // web client 를 chrome 으로 설정
             webView.setWebChromeClient(new WebChromeClient());
             // webview url load
@@ -73,6 +66,7 @@ public class addressActivity extends AppCompatActivity {
                     Log.d("call","call run");
                     String index;
 
+                    //어느 화면에서 호출했는지 분기 태움
                     if(getIntent()!=null){
                         Log.d("call","getIntent");
                         Intent getintent = getIntent();

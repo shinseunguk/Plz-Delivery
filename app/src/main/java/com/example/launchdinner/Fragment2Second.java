@@ -21,7 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
-
+// fragment 두번째화면의 tabbar2 내 직거래 신청 목록
 public class Fragment2Second extends ListFragment {
 
     ListViewAdapter adapter ;

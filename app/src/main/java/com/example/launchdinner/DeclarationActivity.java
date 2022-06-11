@@ -20,6 +20,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+// 신고하기 화면
 public class DeclarationActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = "DeclarationActivity";
@@ -48,6 +49,7 @@ public class DeclarationActivity extends AppCompatActivity {
         tv_error_email = findViewById(R.id.tv_error_email);
         init();//로그인 ID setting
 
+        //텍스트필드가 변경될때마다 서버통신하여 아이디가 유효한지 확인
         editTextDown.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -86,10 +88,11 @@ public class DeclarationActivity extends AppCompatActivity {
 
     //로그인 ID setting
     public void init(){
+        // local storage 에서 아이디 값을 가져옴(로그인 할때 set)
         SharedPreferences pref = getSharedPreferences("Preferenceszz", Activity.MODE_PRIVATE);
         userId = pref.getString("id", "id");
 
-        if(userId != null){
+        if(userId != null){ //자동으로 신고 ID에 세팅
             editTextUp.setText(userId);
             editTextUp.setEnabled(false);
         }else {
@@ -98,6 +101,7 @@ public class DeclarationActivity extends AppCompatActivity {
         }
     }
 
+    // 하단 신고버튼 Onclick method
     public void sendDeclare(View view) {
         Log.d(LOG_TAG, "신고내용 접수");
         if(effectiveness()){
@@ -108,11 +112,12 @@ public class DeclarationActivity extends AppCompatActivity {
             values.put("reported_Id", declarationId);
             values.put("accusation_content", content);
 
-            NetworkTask2 networkTask = new NetworkTask2(localIp+"/accusation", values);
+            NetworkTask2 networkTask = new NetworkTask2(localIp+"/accusation", values); // content를 hashmap으로 묶어 서버 통신
             networkTask.execute();
         }
     }
 
+    //유효성 검사
     public boolean effectiveness(){
         myId = editTextUp.getText().toString();
         declarationId = editTextDown.getText().toString();

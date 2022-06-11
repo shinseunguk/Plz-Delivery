@@ -27,7 +27,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
-
+//tableview를 이용한 설정화면
 public class Fragment5 extends ListFragment {
 
     JSONArray jsonArray = null;
@@ -80,7 +80,7 @@ public class Fragment5 extends ListFragment {
         }
 
 
-        String[] values = new String[]{"더치트 검색", "신고하기", "로그아웃"};
+        String[] values = new String[]{"더치트 검색", "신고하기", "로그아웃"}; // 설정 list
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, values);
         setListAdapter(adapter);
 
@@ -93,6 +93,7 @@ public class Fragment5 extends ListFragment {
         Log.d("Fragment: ", position + ": " + strText);
 //        Toast.makeText(this.getContext(), "클릭: " + position +" " + strText, Toast.LENGTH_SHORT).show();
 
+        //tableview 분기
         switch (position) {
             case 0:
                 goTheCheat();
@@ -109,9 +110,11 @@ public class Fragment5 extends ListFragment {
         }
     }
 
+    //로그아웃
     public void logout(){
         sToast("정상적으로 로그아웃되었습니다");
 
+        //local storage 삭제
         SharedPreferences preferences = this.getActivity().getSharedPreferences("pref", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
 
@@ -122,6 +125,7 @@ public class Fragment5 extends ListFragment {
         NetworkTask networkTask = new NetworkTask(localIp+"/logout");
         networkTask.execute();
 
+        //로그인 화면으로 이동
         UserManagement.getInstance().requestLogout(new LogoutResponseCallback() {
             @Override
             public void onCompleteLogout() {
@@ -132,16 +136,19 @@ public class Fragment5 extends ListFragment {
         });
     }
 
+    //sToast 메소드 구현
     public void sToast(String sToast){
         Toast.makeText(getActivity(),
                 sToast, Toast.LENGTH_SHORT).show();
     }
 
+    //webviewactivity로 이동후 더치트가 다운로드 되어있다면 더치트로 이동, 다운로드 되어 있지않다면 플레이 스토어로 이동
     public void goTheCheat() {
         Intent intent = new Intent(getActivity(), WebviewActivity.class);
         startActivity(intent);
     }
 
+    //신고하기 화면으로 이동
     public void declarationAction() {
         Intent intent = new Intent(getActivity(), DeclarationActivity.class);
         startActivity(intent);

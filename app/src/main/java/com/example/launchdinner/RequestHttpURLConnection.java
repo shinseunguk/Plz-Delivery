@@ -21,6 +21,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
+//서버통신을 위한 CLASS
 public class RequestHttpURLConnection {
 
     Context mContext;

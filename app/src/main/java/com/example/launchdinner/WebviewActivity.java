@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import java.net.URISyntaxException;
 
+//webview 더치트를 열기 위한 activity
 public class WebviewActivity extends AppCompatActivity {
 
     private String TAG = WebviewActivity.class.getSimpleName();
@@ -59,7 +60,7 @@ public class WebviewActivity extends AppCompatActivity {
     private class WebViewClientClass extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if (url != null && url.startsWith("intent://")) {
+            if (url != null && url.startsWith("intent://")) { // url이 intent://를 포함하고 있으면 앱으로 이동
                 try {
                     Intent intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
                     Intent existPackage = getPackageManager().getLaunchIntentForPackage(intent.getPackage());
@@ -74,7 +75,7 @@ public class WebviewActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-            } else if (url != null && url.startsWith("market://")) {
+            } else if (url != null && url.startsWith("market://")) { // url이 market://을 포함하고 있으면 플레이 스토어로 이동
                 try {
                     Intent intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
                     if (intent != null) {

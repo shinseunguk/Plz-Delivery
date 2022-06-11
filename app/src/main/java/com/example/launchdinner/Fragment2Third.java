@@ -21,7 +21,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
-
+// fragment 두번째화면의 tabbar3 내가 배달중인 목록
 public class Fragment2Third extends ListFragment {
 
     ListViewAdapter adapter ;

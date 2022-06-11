@@ -1,6 +1,6 @@
 package com.example.launchdinner;
 
-public class Board {
+public class Board { // BoardVO
     long id;
     String title;
     String content;

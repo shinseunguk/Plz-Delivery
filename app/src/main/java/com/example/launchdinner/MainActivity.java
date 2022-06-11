@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+//splash 화면
 public class MainActivity extends AppCompatActivity {
 
     @Override

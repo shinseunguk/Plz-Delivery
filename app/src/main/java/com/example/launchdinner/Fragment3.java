@@ -28,7 +28,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
-
+// fragment3 화면 회원정보 수정 화면
 public class Fragment3 extends Fragment {
 
     JSONArray jsonArray = null;
@@ -72,6 +72,7 @@ public class Fragment3 extends Fragment {
         NetworkTask networkTask = new NetworkTask(localIp+"/checkbox", values);
         networkTask.execute();
 
+        //처음 화면 그려질때 로그인된 회원정보 가져옴
         try {
 
             jsonArray = new JSONArray(networkTask.get());
@@ -98,6 +99,7 @@ public class Fragment3 extends Fragment {
             editAddr2.setEnabled(true);
         }
 
+        //카카오 맵 api 호출
         btnAddr.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -107,6 +109,7 @@ public class Fragment3 extends Fragment {
            }
         });
 
+        //수정 버튼 onclick method
         btnModify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

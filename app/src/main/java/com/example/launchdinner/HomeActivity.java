@@ -24,6 +24,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.kakao.usermgmt.UserManagement;
 import com.kakao.usermgmt.callback.LogoutResponseCallback;
 
+//메인화면 activity
 public class HomeActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
@@ -52,11 +53,12 @@ public class HomeActivity extends AppCompatActivity {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-        FragmentManager fragmentManager = getSupportFragmentManager();
+        bottomNavigationView = findViewById(R.id.bottomNavigationView); // 바텀 네비게이션바 구현
+        tabLayout = (TabLayout) findViewById(R.id.tabs);// tablayout 구현
+        FragmentManager fragmentManager = getSupportFragmentManager(); // fragment manager를 이용한 바텀 네비게이션바 구현
 
 
+            // 어플 첫 진입이 아닌 다른 화면에서 메인화면으로 화면이동 될때 네비게이션바 방향을 잡아줌
             if(getIntent() != null){
                 Intent intent = getIntent();
                 if(intent.getStringExtra("index") != null){ // 직거래 신청 후
@@ -90,6 +92,7 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
 
+        //tabLayout setting
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

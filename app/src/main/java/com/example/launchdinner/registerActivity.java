@@ -62,8 +62,8 @@ public class registerActivity extends AppCompatActivity {
         spinner =(Spinner)findViewById(R.id.month);
         spinner1 =(Spinner)findViewById(R.id.sex);
 
-        month = new String[]{"월","01","02","03","04","05","06","07","08","09","10","11","12"};
-        gender = new String[]{"성별","남","여"};
+        month = new String[]{"월","01","02","03","04","05","06","07","08","09","10","11","12"}; //생일 배열
+        gender = new String[]{"성별","남","여"}; // 성별 배열
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,month);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 

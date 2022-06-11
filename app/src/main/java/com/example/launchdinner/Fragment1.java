@@ -40,6 +40,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
+//Fragment1 첫번째 화면(직거래 신청)
 public class Fragment1 extends Fragment implements View.OnClickListener {
 
     Spinner spinner, spinner1;
@@ -90,6 +91,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
         firstHour = new String[144];
         secondHour = new String[144];
 
+        //for문을 이용한 물품 전달시간을 spinner에 담음
         for (int i = 0; i <= 23; i++) {
             for (int j = 0; j <= 50; j += 10) {
                 if (i == 0 && j == 0) {
@@ -153,6 +155,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
                     try {
                         jsonArray = new JSONArray(networkTask.get());
 
+                        // 로그인시에 서버 통신후자동으로 값들을 가져옴
                         JSONObject jsonObject = jsonArray.getJSONObject(0); //i번째 Json데이터를 가져옴
                         applyName.setText(jsonObject.getString("name"));
                         applyTel.setText(jsonObject.getString("tel"));
@@ -165,7 +168,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                } else {
+                } else { // 체크박스 해제
                     applyName.setText("");
                     applyTel.setText("");
                     address1.setText("");

@@ -27,7 +27,7 @@ import net.daum.mf.map.api.MapView;
 
 import java.io.IOException;
 import java.util.List;
-
+//카카오 맵 api activity화면
 public class KakaoMapViewActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = "KakaoActivity";

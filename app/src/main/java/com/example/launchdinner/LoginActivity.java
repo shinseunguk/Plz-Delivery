@@ -36,7 +36,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import javax.net.ssl.HttpsURLConnection;
-
+//로그인 acitivity
 public class LoginActivity extends AppCompatActivity {
 
     private SessionCallback sessionCallback;
@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
 //        getHashKey(); //hash 값 가져오기
     }
 
-    //카카오 로그인 관련
+    //카카오 로그인 관련(deprecated) 사용하지 않음
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if(Session.getCurrentSession().handleActivityResult(requestCode, resultCode, data)) {
@@ -228,6 +228,7 @@ public class LoginActivity extends AppCompatActivity {
             return result; // 결과가 여기에 담깁니다. 아래 onPostExecute()의 파라미터로 전달됩니다.
         }
 
+        //서버 통신후 return 값으로 분기태움
         @Override
         protected void onPostExecute(String result) {
             String identity = id.getText().toString();

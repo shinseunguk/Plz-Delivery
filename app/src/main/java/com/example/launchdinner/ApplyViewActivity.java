@@ -20,7 +20,7 @@ import org.json.JSONObject;
 import java.text.DecimalFormat;
 import java.util.concurrent.ExecutionException;
 
-
+//직거래 view 화면
 public class ApplyViewActivity extends AppCompatActivity {
 
     TextView applyName, applyTel, address, departureTime, arriveTime, applyItem, applyPrice, arriveName, arriveTel, arriveAddress, seq;
@@ -42,7 +42,7 @@ public class ApplyViewActivity extends AppCompatActivity {
 
         Log.d("ApplyViewActivity", "loginId..."+ loginId);
 
-        //TextVIew
+        //TextVIew 객체 가져오기
         applyName = findViewById(R.id.applyName);
         applyTel = findViewById(R.id.applyTel);
         address = findViewById(R.id.address);
@@ -55,13 +55,14 @@ public class ApplyViewActivity extends AppCompatActivity {
         arriveAddress = findViewById(R.id.arriveAddress);
         seq = findViewById(R.id.seq);
 
-        //Button
+        //Button 객체 가져오기
         btnShowMipMap = findViewById(R.id.btnShowMipMap);
         btnDelivery = findViewById(R.id.btnDelivery);
         btnDelete = findViewById(R.id.btnDelete);
 
         btnDelete.setVisibility(View.GONE);
 
+        //지도보기 onclick 함수
         btnShowMipMap.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -80,6 +81,7 @@ public class ApplyViewActivity extends AppCompatActivity {
             }
         });
 
+        //배달하기 버튼 눌렀을때
         btnDelivery.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -96,8 +98,8 @@ public class ApplyViewActivity extends AppCompatActivity {
 
                     try {
                         String result = networkTask.get();
-                        if(result.equals("1")) {
-                            Intent intent = new Intent(ApplyViewActivity.this, HomeActivity.class);
+                        if(result.equals("1")) { // 서버통신후 return 값이 1일때
+                            Intent intent = new Intent(ApplyViewActivity.this, HomeActivity.class); // 메인화면으로 이동
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
                         }
@@ -107,7 +109,7 @@ public class ApplyViewActivity extends AppCompatActivity {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                } else if(btnDelivery.getText().equals("배달완료")){
+                } else if(btnDelivery.getText().equals("배달완료")){ // 버튼의 Title 이 배달완료 일때
                     Log.d("btnDelivery","배달완료");
 
                     String seqText= (String)seq.getText();
@@ -136,6 +138,7 @@ public class ApplyViewActivity extends AppCompatActivity {
             }
         });
 
+        //배달삭제 onclick 함수
         btnDelete.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -151,8 +154,8 @@ public class ApplyViewActivity extends AppCompatActivity {
                 try {
                     String result = networkTask.get();
                     Log.d("deletedelivery...", result);
-                    if(result.equals("1")) {
-                        Intent intent = new Intent(ApplyViewActivity.this, HomeActivity.class);
+                    if(result.equals("1")) { // 서버 통신후 return이 1일때
+                        Intent intent = new Intent(ApplyViewActivity.this, HomeActivity.class); // 메인화면으로 이동
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
 

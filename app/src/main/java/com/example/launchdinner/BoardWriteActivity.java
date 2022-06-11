@@ -21,6 +21,7 @@ import android.widget.Toast;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+//게시판 작성 및 수정 화면
 public class BoardWriteActivity extends AppCompatActivity {
 
     private static final String LOG_TAG = "BoardWriteActivity";
@@ -54,6 +55,7 @@ public class BoardWriteActivity extends AppCompatActivity {
 
         init(); //로그인 ID setting
 
+        // 게시판 수정 일때
         if(getIntent() != null){
             Intent intent = getIntent();
             if(intent.getStringExtra("index").equals("revise")){
@@ -71,6 +73,7 @@ public class BoardWriteActivity extends AppCompatActivity {
 
     //로그인 ID setting
     public void init(){
+        // local storage 아이디 가져옴
         SharedPreferences pref = getSharedPreferences("Preferenceszz", Activity.MODE_PRIVATE);
         userId = pref.getString("id", "id");
 
@@ -82,11 +85,11 @@ public class BoardWriteActivity extends AppCompatActivity {
             writer.setEnabled(true);
         }
 
-        boardDate.setText(getDate());
+        boardDate.setText(getDate()); // 현재 날짜를 가져와 formatting
     }
 
     public String getDate(){
-    // 현재 날짜 구하기
+        // 현재 날짜 구하기
         LocalDate now = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             now = LocalDate.now();
@@ -107,22 +110,23 @@ public class BoardWriteActivity extends AppCompatActivity {
         return formatedNow;
     }
 
+    //게시판 작성 및 게시판 수정 onclick method
+    //버튼의 타이틀이 게시판 작성일때는 insert, 게시판 수정일때는 update
     public void sendBoard(View view) {
-        String btnTitle = btnDeclare.getText().toString();
+        String btnTitle = btnDeclare.getText().toString(); // 버튼 타이틀로 분기를 태움
 
         if(btnTitle.equals("게시판 작성")){
             Log.d(LOG_TAG, "게시판 작성");
             if(effectiveness()){
                 ContentValues values = new ContentValues();
 
-                //영재한테 변수명 물어보기
                 values.put("server", "board");
                 values.put("member", myId);
                 values.put("title", title);
                 values.put("content", content);
                 values.put("date", date);
 
-                NetworkTask networkTask = new NetworkTask(localIp+"/boardWrite", values);
+                NetworkTask networkTask = new NetworkTask(localIp+"/boardWrite", values); // 서버통신
                 networkTask.execute();
             }
         }else {
@@ -130,7 +134,6 @@ public class BoardWriteActivity extends AppCompatActivity {
             if(effectiveness()){
                 ContentValues values = new ContentValues();
 
-                //영재한테 변수명 물어보기
                 values.put("server", "board");
                 values.put("id", id);
                 values.put("member", myId);
@@ -138,13 +141,14 @@ public class BoardWriteActivity extends AppCompatActivity {
                 values.put("content", content);
                 values.put("date", date);
 
-                NetworkTask networkTask = new NetworkTask(localIp+"/boardEdit", values);
+                NetworkTask networkTask = new NetworkTask(localIp+"/boardEdit", values); // 서버통신
                 networkTask.execute();
             }
         }
 
     }
 
+    //게시판 작성 유효성 검사
     public boolean effectiveness(){
         myId = writer.getText().toString();
         title = boardTitle.getText().toString();
@@ -211,7 +215,7 @@ public class BoardWriteActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             Log.d(LOG_TAG+"!@#", result);
-            if(result.equals("true")){
+            if(result.equals("true")){ // 서버통신후 true값 일때 메인화면으로 이동
                 Intent intent = new Intent(BoardWriteActivity.this, HomeActivity.class);
                 intent.putExtra("index", "fragment4");
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

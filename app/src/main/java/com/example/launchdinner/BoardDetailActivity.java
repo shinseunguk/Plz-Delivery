@@ -25,6 +25,7 @@ import org.json.JSONObject;
 import java.text.DecimalFormat;
 import java.util.List;
 
+//게시판 클릭 화면
 public class BoardDetailActivity extends AppCompatActivity {
 
     String LOG_TAG = "BoardDetailActivity";
@@ -36,7 +37,7 @@ public class BoardDetailActivity extends AppCompatActivity {
 
     List<String> listview_items;
     ArrayAdapter<String> listview_adapter;
-    String[] items = {"수정 / 삭제", "게시판 수정", "게시판 삭제"};
+    String[] items = {"수정 / 삭제", "게시판 수정", "게시판 삭제"}; // spinner를 이용하기 위한 배열 선언
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,14 +46,18 @@ public class BoardDetailActivity extends AppCompatActivity {
 
         init();
 
+
+        //local storage (로그인 할때 set해줌)
         SharedPreferences pref = getSharedPreferences("Preferenceszz", Activity.MODE_PRIVATE);
         userId = pref.getString("id", "id");
 
+        //spinner 객체 가져오기
         title = findViewById(R.id.title);
         content = findViewById(R.id.content);
         writer = findViewById(R.id.writer);
         time = findViewById(R.id.time);
 
+        //spinner 객체 가져오기
         spinner = (Spinner) findViewById(R.id.spinner2);
 
         //스피너 어뎁터
@@ -62,7 +67,7 @@ public class BoardDetailActivity extends AppCompatActivity {
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) { // spinner 선택시 onclick method
                 if(i != 0){
                     if(i == 1){ // 게시판 수정 boardEdit
                         Log.d(LOG_TAG, "게시판 수정");
@@ -81,18 +86,10 @@ public class BoardDetailActivity extends AppCompatActivity {
 
                         NetworkTask2 networkTask2 = new NetworkTask2(localIp+"/boardDelete", values);
                         networkTask2.execute();
-
-                        // 테스트
-//                        Intent intent = new Intent(BoardDetailActivity.this, HomeActivity.class);
-//                        intent.putExtra("index", "fragment4");
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        startActivity(intent);
-
                     }
                 }
             }
-            @Override public void onNothingSelected(AdapterView<?> adapterView) {
+            @Override public void onNothingSelected(AdapterView<?> adapterView) { // 선택되지 않았을때
 
             }
         });
@@ -109,7 +106,7 @@ public class BoardDetailActivity extends AppCompatActivity {
     }
 
     public void init(){
-        if(getIntent() != null){
+        if(getIntent() != null){ // 화면이 그려지자 마자 서버통신후 해당 게시글을 가져옴
             Intent intent = getIntent();
             id = intent.getLongExtra("id",1234);
             Log.d(LOG_TAG+"!!!!!", String.valueOf(id));
@@ -117,8 +114,7 @@ public class BoardDetailActivity extends AppCompatActivity {
             ContentValues values = new ContentValues();
             values.put("id", id);
 
-            // 테스트
-            NetworkTask networkTask = new NetworkTask(localIp+"/boardDetail", values);
+            NetworkTask networkTask = new NetworkTask(localIp+"/boardDetail", values); // 서버통신
             networkTask.execute();
         }
     }
@@ -170,13 +166,13 @@ public class BoardDetailActivity extends AppCompatActivity {
 
                 Log.d(LOG_TAG+"result" , json.getString("member"));
 
-                if(userId.equals(json.getString("member"))){
+                if(userId.equals(json.getString("member"))){ // 자신이 쓴 글일때 '수정/삭제' 권한을 가져옴
                     spinner.setVisibility(View.VISIBLE);
                 }else {
                     spinner.setVisibility(View.INVISIBLE);
                 }
 
-                //금액 format
+                //서버통신후 setText
                 title.setText(json.getString("title")); // 제목
                 content.setText(json.getString("content"));// 내용
                 time.setText("작성날짜  -  "+json.getString("localDateTime").replaceAll("-","/"));// 시간

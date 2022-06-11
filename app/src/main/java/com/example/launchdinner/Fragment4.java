@@ -22,7 +22,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.concurrent.ExecutionException;
-
+//Fragment 네번째 화면(게시판)
 public class Fragment4 extends ListFragment{
     String LOG_TAG = "Fragment4";
     ListViewAdapter2 adapter;
@@ -74,6 +74,7 @@ public class Fragment4 extends ListFragment{
                         JSONObject jsonObject = jsonArray.getJSONObject(jsonArray.length()-(i+1)); //i번째 Json데이터를 가져옴
                         Log.d("jsonObject F4", jsonObject.getString("member"));
                         date = jsonObject.getString("localDateTime").replaceAll("-","/");
+                        //게시판 adapter.additem
                         adapter.addItem(jsonObject.getString("title"), date, "작성자 : "+ jsonObject.getString("member"), jsonObject.getLong("id"));
 //                        adapter.addItem("아진짜 자고싶다!!~!~!~", "2021/04/18" , "작성자 : 테스트", 21341231);
                     }

@@ -35,7 +35,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
-
+//fragment 두번째화면의 tabbar1 직거래 list
 public class Fragment2 extends ListFragment {
 
     ListViewAdapter adapter;
@@ -70,19 +70,20 @@ public class Fragment2 extends ListFragment {
         ContentValues values = new ContentValues();
         values.put("member", loginId);
 
-        NetworkTask networkTask = new NetworkTask(localIp+"/applylist", values);
+        NetworkTask networkTask = new NetworkTask(localIp+"/applylist", values); //서버 통신
         networkTask.execute();
 
         try {
             Log.d("Fragment2 List",networkTask.get());
             try {
                 JSONArray jsonArray = new JSONArray(networkTask.get());
-                if(jsonArray.length() == 0){
+                if(jsonArray.length() == 0){ // 직거래가 한건도 없을때 toast 메시지 show
                     Toast.makeText(getActivity(),"요청된 직거래가 없습니다",Toast.LENGTH_SHORT).show();
                 }else{
                     for(int i = 0 ; i < jsonArray.length() ; i++){
                         JSONObject jsonObject = jsonArray.getJSONObject(i); //i번째 Json데이터를 가져옴
                         Log.d("dd",jsonObject.getString("start_address1"));
+                        //adapter additem
                         adapter.addItem("시작주소  -  " + jsonObject.getString("start_address1")+" "+jsonObject.getString("start_address2"),"받는주소  -  " + jsonObject.getString("end_address1")+ " "+ jsonObject.getString("end_address2"),"희망 수거 시간  -  " + jsonObject.getString("departure_time"), jsonObject.getString("arrive_time"),"거래 물품  -  " + jsonObject.getString("exchange_item"), "거래 번호 - "+  jsonObject.getString("seq"), jsonObject.getString("delivery_yn"));
                     }
 //                    listView.getLayoutParams().height = jsonArray.length() * 100;
